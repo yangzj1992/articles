@@ -3,6 +3,8 @@ date: 2015-09-11 22:55:11
 categories: bug
 tags: [Chrome,JSON,Debug]
 ---
+[github地址](https://github.com/yangzj1992/articles/blob/master/关于chrome报错netERR_INCOMPLETE_CHUNKED_ENCODING的解决方案.md)
+
 ##背景
 今天遇到一个bug问题，这个bug问题很神奇，在chrome下刷新项目页时会报错`net::ERR_INCOMPLETE_CHUNKED_ENCODING`而显示不出网页，在Safari和Firefox下正常。查了一下这个错误的网上的解决方案。众说纷纭比较多，由于这个BUG着实查着改了很久..这里进行一个总结，来帮助可能被坑的后来人。
 ##BUG描述及解决办法

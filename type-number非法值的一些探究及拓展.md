@@ -3,6 +3,8 @@ date: 2015-09-01 13:58:50
 categories: HTML
 tags: [浏览器,表单,input,HTML5,兼容性]
 ---
+[github地址](https://github.com/yangzj1992/articles/blob/master/type-number非法值的一些探究及拓展.md)
+
 ## 问题描述
 
 ### 需求是这样的

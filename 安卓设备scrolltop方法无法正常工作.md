@@ -3,6 +3,8 @@ date: 2015-10-09 14:37:26
 categories: 兼容性
 tags: [兼容性,移动端,Android]
 ---
+[github地址](https://github.com/yangzj1992/articles/blob/master/安卓设备scrolltop方法无法正常工作.md)
+
 ###问题情况
 今天遇到一个问题，在Android设备下scrollTop()方法无法正常执行。
 ###解决办法

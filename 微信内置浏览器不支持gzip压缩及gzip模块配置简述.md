@@ -3,6 +3,8 @@ date: 2015-11-11 17:50:02
 categories: 微信X5浏览器
 tags: [微信浏览器,ajax,gzip,性能优化,HTTP]
 ---
+[github地址](https://github.com/yangzj1992/articles/blob/master/微信内置浏览器不支持gzip压缩及gzip模块配置简述.md)
+
 ###情况
 今天在做微信项目用ajax传值时发现了一些异常的现象。使用微信版本:6.3.7
 
