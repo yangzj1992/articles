@@ -3,11 +3,10 @@ date: 2015-10-17 17:33:32
 categories: 兼容性
 tags: [兼容性,移动端,iOS]
 ---
-[github地址](https://github.com/yangzj1992/articles/blob/master/iOS不兼容position-fixed属性.md)
 
 ###问题情况
 在移动端开发过程中如果在头部或底部设置position:fixed的元素，可能会在ios8以下的系统中出现以下问题，当用户进行输入时系统键盘激活，此类fixed的元素会出现位置浮动问题。类似如下图所示：
-![position:fixed](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/iOS不兼容position-fixed属性/ios_position_fixed.jpeg)
+![position:fixed](http://qcyoung.qiniudn.com/qcyoung/iOS不兼容position-fixed属性/ios_position_fixed.jpeg)
 ###解决办法
 解决办法大致如下：
 确保自己的页面已引入浏览器适应性meta

@@ -3,9 +3,10 @@ date: 2015-11-18 16:48:18
 categories: web动画
 tags: [CSS,web动画]
 ---
+
 ##介绍
 今年4月左右有一个比较火的网站species-in-pieces在前端圈里比较出名，[点击这里查看](http://species-in-pieces.com/#)
-![species-in-pieces效果](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/使用clip-path制作简单的动画效果/poster-detail-2.png)
+![species-in-pieces效果](http://qcyoung.qiniudn.com/qcyoung/使用clip-path制作简单的动画效果/poster-detail-2.png)
 它的原理就是运用了clip-path来进行实现。
 在《species in pieces》中每个动物的组成节点如下所示
 
@@ -70,14 +71,19 @@ tags: [CSS,web动画]
 ##举个栗子
 这里做了一个简单的demo,鼠标滑到界面上github小猫就会发生变化（仅支持webkit内核浏览器）
 
-<iframe src="/project/clip-path.html" width="100%" height="550px" frameborder="0" scrolling="no"></iframe>
+<iframe src="/project/clip-path.html" width="100%" height="550px" id="framedemo" frameborder="0" scrolling="no"></iframe>
 
 ##拓展
 
 此外clip-path属性也可以实现3D模型渲染的效果，如下图所示：
 
-![3D动画效果1](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/使用clip-path制作简单的动画效果/snapshot.gif)
+![3D动画效果1](http://qcyoung.qiniudn.com/qcyoung/使用clip-path制作简单的动画效果/snapshot.gif)
 
-![3D动画效果2](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/使用clip-path制作简单的动画效果/6252205cgw1eqmyg50fsjg208e0a44mf.gif)
+![3D动画效果2](http://qcyoung.qiniudn.com/qcyoung/使用clip-path制作简单的动画效果/6252205cgw1eqmyg50fsjg208e0a44mf.gif)
 
 关于更详细的描述，这里有一篇很详细的博文可以参考[网易萝卜的博文](http://leeluolee.github.io/2015/04/01/render-3d-use-clip-path/)
+
+<script>
+  var width = $("#framedemo").width();
+  $("#framedemo").height(width*0.77)
+</script>

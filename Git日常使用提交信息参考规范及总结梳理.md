@@ -22,7 +22,7 @@ $ git commit -m "hello world"
 $ git commit
 ```
 但是，一般来说，commit message 应该清晰明了，说明本次提交的目的。
-![commit-message-example](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/commit-message-example.png)
+![commit-message-example](http://qcyoung.qiniudn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/commit-message-example.png)
 
 目前，社区有多种 Commit message 的[写法规范](https://github.com/ajoslin/conventional-changelog/tree/master/conventions)。本文介绍[Angular 规范](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.greljkmo14y0)（如上图），这是目前使用最广的写法，比较合理和系统化，并且有配套的工具。
 
@@ -34,7 +34,7 @@ $ git commit
 ```
 $ git log <last tag> HEAD --pretty=format:%s
 ```
-![git-log-pretty](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/git-log-pretty.png)
+![git-log-pretty](http://qcyoung.qiniudn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/git-log-pretty.png)
 ####（2）可以过滤某些commit（比如文档改动），便于快速查找信息。
 比如，下面的命令仅仅显示本次发布新增加的功能。
 ```
@@ -42,7 +42,7 @@ $ git log <last release> HEAD --grep feature
 ```
 ####（3）可以直接从commit生成Change log。
 Change Log 是发布新版本时，用来说明与上一个版本差异的文档，详见后文。
-![git-change-log-example](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/git-change-log-example.png)
+![git-change-log-example](http://qcyoung.qiniudn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/git-change-log-example.png)
 ###二、Commit message 的格式
 每次提交，Commit message 都包括三个部分：Header，Body 和 Footer。
 ```
@@ -145,7 +145,7 @@ $ npm install -g commitizen
 $ commitizen init cz-conventional-changelog --save --save-exact
 ```
 以后，凡是用到`git commit`命令，一律改为使用`git cz`。这时，就会出现选项，用来生成符合格式的 Commit message。
-![angular-commit-log-style](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/angular-commit-log-style.png)
+![angular-commit-log-style](http://qcyoung.qiniudn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/angular-commit-log-style.png)
 ###四、validate-commit-msg
 [validate-commit-msg](https://github.com/kentcdodds/validate-commit-msg) 用于检查 Node 项目的 Commit message 是否符合格式。
 它的安装是手动的。首先，拷贝下面这个[JS文件](https://github.com/kentcdodds/validate-commit-msg/blob/master/index.js)，放入你的代码库。文件名可以取为`validate-commit-msg.js`。

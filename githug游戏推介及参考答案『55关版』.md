@@ -1,9 +1,9 @@
-title: githug游戏推介及参考答案『55关版』.md
+title: githug游戏推介及参考答案『55关版』
 date: 2016-01-04 00:21:21
-categories: git
-tags: [git]
+categories: Git
+tags: [Git]
 ---
-[github地址](https://github.com/yangzj1992/articles/blob/master/githug游戏推介及参考答案『55关版』.md)
+
 #游戏简介
 这几天看到一个git的游戏——[githug](https://github.com/Gazler/githug)，试了下发现可以帮助大家熟悉git的一些常用操作,试着做了一下感觉还不错，通关过程基本没有什么太大的难点，这里做一个推荐并把自己通关的过程记录一下方便后人查看。
 

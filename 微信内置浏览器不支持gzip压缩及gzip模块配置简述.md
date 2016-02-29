@@ -3,28 +3,27 @@ date: 2015-11-11 17:50:02
 categories: 微信X5浏览器
 tags: [微信浏览器,ajax,gzip,性能优化,HTTP]
 ---
-[github地址](https://github.com/yangzj1992/articles/blob/master/微信内置浏览器不支持gzip压缩及gzip模块配置简述.md)
 
 ###情况
 今天在做微信项目用ajax传值时发现了一些异常的现象。使用微信版本:6.3.7
 
-![异常ajax列表](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/yichang1.png)
+![异常ajax列表](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/yichang1.png)
 
 1个ajax请求请求了120kb?!打开此请求详情看了一下发现了一个关键点。
 
-![微信请求头](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/weixin_requestheader.png)
+![微信请求头](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/weixin_requestheader.png)
 
 这个微信请求，在请求头中没有接受编码头(Accept-Encoding),而在正常的电脑chrome中Accept-Encoding是正常的。
 
-![chrome请求头](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_requestheader.png)
+![chrome请求头](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_requestheader.png)
 
 难道是微信浏览器不支持gzip的压缩方式？这里我抓包做了实验，首先我在电脑端chrome下把Accept-Encoding中的gzip值干掉进行请求。果然，请求的大小一下子飙升到微信上请求的相应大小
 
-![请求列表](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_kill_gzip_list.png)
+![请求列表](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_kill_gzip_list.png)
 
 此请求报表头如下：
 
-![清理头](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_kill_gzip_header.png)
+![清理头](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_kill_gzip_header.png)
 
 ###w3标准
 由于在w3.org中关于[XMLHttpRequest](http://www.w3.org/TR/XMLHttpRequest/)的描述中指出
@@ -88,17 +87,17 @@ $.ajax({
 之后我测试了一米鲜和京东的相关页面，也发现了类似的情况。这里拿JD举例。
 
 在微信中未压缩请求diviner大小,17.53kb.
-![jd](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/weixinjd.png)
+![jd](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/weixinjd.png)
 
 请求头如下
 
-![jd](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_jd_header副本.png)
+![jd](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_jd_header副本.png)
 
 在手机chrome下启用gzip大小为5.2kb:
 
-![jd](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/mobile_chrome_jd_list.png)
+![jd](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/mobile_chrome_jd_list.png)
 
-![jd](http://7bv937.com1.z0.glb.clouddn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/mobile_chrome_jd_header.png)
+![jd](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/mobile_chrome_jd_header.png)
 
 
 ###gzip配置说明
