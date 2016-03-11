@@ -4,7 +4,7 @@ categories: Git
 tags: [Git]
 ---
 
-#游戏简介
+# 游戏简介
 这几天看到一个git的游戏——[githug](https://github.com/Gazler/githug)，试了下发现可以帮助大家熟悉git的一些常用操作,试着做了一下感觉还不错，通关过程基本没有什么太大的难点，这里做一个推荐并把自己通关的过程记录一下方便后人查看。
 
 当然这些游戏练习只是帮助熟悉，难度基本属于日常操作，如果是git新手最好的学习方法还是先看一遍[git文档](https://git-scm.com/book/zh/v2)
@@ -81,7 +81,7 @@ alias.br=branch
 githug hint
 ```
 
-#攻略
+# 攻略
 
 ---
 Name: init

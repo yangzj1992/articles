@@ -3,7 +3,8 @@ date: 2016-02-28 11:49:21
 categories: 构建工具
 tags: [npm,构建工具,Gulp,Grunt]
 ---
-##背景
+## 背景
+
 最近看到了几篇文章，讲述了运用npm来代替Gulp,Grunt进行构建的工作，文中一些说法和场景让我感同身受、深表赞同，故在此整理一下相关内容与方法。
 原帖地址：
 [我为何放弃Gulp与Grunt，转投npm scripts](http://www.infoq.com/cn/news/2016/02/gulp-grunt-npm-scripts-part1)
@@ -16,7 +17,7 @@ tags: [npm,构建工具,Gulp,Grunt]
 
 当然了，这些问题都是可以解决的；不过，这势必会消耗我们相当的时间成本，最近，我注意到有很多开源项目只是使用了npm scripts。因此，我决定重新审视一下自己的做法。我真的需要Gulp么？答案是并不需要。现在，相对于Gulp来说，我更倾向于使用npm scripts，下面就来谈谈原因。
 
-##Gulp与Grunt怎么了？
+## Gulp与Grunt怎么了？
 
 随着时间的流逝，我们会逐渐发现诸如Gulp与Grunt等任务运行器都存在以下3个核心问题：
 
@@ -25,7 +26,7 @@ tags: [npm,构建工具,Gulp,Grunt]
 - 脱节的文档
 下面就来详细分析上述3个问题。
 
-###问题1：对插件作者的依赖
+### 问题1：对插件作者的依赖
 
 在使用比较新或是不那么流行的技术时，可能根本就没有插件。当有插件可用时，插件可能已经过时了。比如说，Babel 6前一阵发布了。其API变化非常大，这样很多Gulp插件都无法兼容于最新的版本。在使用Gulp时，我就感到深深的受伤，因为我所需要的Gulp插件还没有更新。在使用Gulp或是Grunt时，你不得不等待插件维护者提供更新，或是自己修复。这会阻碍你使用最新版现代化工具的机会。与之相反，在使用npm scripts时，我会直接使用工具，不必再添加一个额外的抽象层。这意味着当新版本的Mocha、Istanbul、Babel、Webpack、Browserify等发布时，我可以立刻就使用上新的版本。对于选择来说，没有什么能够打败npm：
 
@@ -35,7 +36,7 @@ tags: [npm,构建工具,Gulp,Grunt]
 
 在使用npm scripts时，你无需再搜索Grunt或是Gulp插件；只需从227,000多个npm包中选择就行了。公平地说，如果所需要的Grunt或是Gulp插件不存在，你当然可以直接使用npm packages。不过，这样就无法再针对这个特定的任务使用Gulp或是Grunt了。
 
-###问题2：令人沮丧的调试
+### 问题2：令人沮丧的调试
 
 如果集成失败了，那么在Grunt和Gulp中调试是一件令人沮丧的事情。因为你面对的是一个额外的抽象层，对于任何Bug来说都有可能存在更多潜在的原因：
 
@@ -45,7 +46,7 @@ tags: [npm,构建工具,Gulp,Grunt]
 - 使用的版本是不是不兼容？
 使用npm scripts可以消除上面的第2点，我发现第3点也很少会出现，因为我通常都是直接调用工具的命令行接口。最后，第4点也很少出现，因为我通过直接使用npm而不是任务运行器的抽象减少了项目中包的数量。
 
-###问题3：脱节的文档
+### 问题3：脱节的文档
 
 一般来说，我所需要的核心工具的文档质量总是要比与之相关的Grunt和Gulp插件的好。比如说，如果使用了gulp-eslint，那么我就要在[gulp-eslint](https://github.com/adametry/gulp-eslint)文档与ESLint网站之间来回切换；不得不在插件与插件所抽象的工具之间来回切换上下文。Gulp与Grunt的问题在于：光理解所用的工具是远远不够的。Gulp与Grunt要求你还得理解插件的抽象。
 
@@ -55,7 +56,7 @@ tags: [npm,构建工具,Gulp,Grunt]
 
 接下来我们谈谈npm scripts的强大功能以及人们为何会忽略npm scripts。
 
-##在构建时我们为何会忽略掉npm？
+## 在构建时我们为何会忽略掉npm？
 
 我认为有如下4点原因造成Gulp与Grunt等任务运行器变得如此流行：
 
@@ -65,13 +66,13 @@ tags: [npm,构建工具,Gulp,Grunt]
 - 人们认为npm scripts无法实现跨平台运行
 下面我们将按顺序依次解释一下这些误解。
 
-###误解1：使用npm scripts需要强大的命令行技巧
+### 误解1：使用npm scripts需要强大的命令行技巧
 
 体验npm scripts的强大功能其实并不需要对操作系统的命令行了解太多。当然了，[grep、sed、awk与管道](http://www.tutorialspoint.com/unix/unix-useful-commands.htm)等是值得你去学习的，令你众生受用的技能；不过，为了使用npm scripts，你不必非得成为Unix或是Windows命令行专家才行。你可以通过npm中1000多个拥有良好文档的脚本来完成工作。
 
 比如说，你可能不知道在Unix中，命令rm -rf会强制删除一个目录，这没问题。你可以使用[rimraf](https://www.npmjs.com/package/rimraf)完成同样的事情（它也是跨平台的）。大多数npm包都提供了一些接口，这些接口假设你对所用操作系统的命令行了解不多。只需在npm中搜索想要使用的包即可，边做边学就行了。过去，我常常会搜索Gulp插件，不过现在则是搜索npm包了。[libraries.io](https://libraries.io/)是个非常棒的资源。
 
-###误解2：npm scripts不够强大
+### 误解2：npm scripts不够强大
 
 npm scripts本身其实是非常强大的。它提供了基于约定的[pre与post钩子](https://docs.npmjs.com/misc/scripts#description)：
 ```
@@ -118,7 +119,7 @@ npm scripts本身其实是非常强大的。它提供了基于约定的[pre与po
 ```
 我在上述的build任务中调用了一个单独的脚本。该脚本会被Node所运行，这样就可以使用我所需的任何npm包了，同时还可以利用上JavaScript的能力。我还能列出很多，不过感兴趣的读者可以参考这份[核心特性文档](https://docs.npmjs.com/misc/scripts)。
 
-###误解3：Gulp的流对于快速构建来说是不可或缺的
+### 误解3：Gulp的流对于快速构建来说是不可或缺的
 
 Gulp出来后，人们之所以很快就被它吸引过去并放弃Grunt的原因在于Gulp的内存流要比Grunt基于文件的方式快很多。不过，要想享受到流的强大功能，实际上并不需要Gulp。事实上，流早就已经被内建到Unix与Windows命令行中了。管道（|）运算符会将一个命令的输出以流的方式作为另一个命令的输入。重定向（>）运算符则会将输出重定向到文件。比如说在Unix中，我可以“grep”一个文件的内容，并将输出重定向到一个新的文件：
 ```
@@ -132,13 +133,13 @@ npm run script1.js & npm run script2.js
 ```
 上述两个脚本会同时运行。要想以跨平台的方式同时运行脚本，请使用[npm-run-all](https://www.npmjs.com/package/npm-run-all)。这就造成了下面这个误解。
 
-###误解4：npm scripts无法实现跨平台运行
+### 误解4：npm scripts无法实现跨平台运行
 
 很多项目都会绑定到特定的操作系统上，因此跨平台是一件并不那么重要的事情。不过，如果需要以跨平台的方式运行，那么npm scripts依然可以工作得很好。无数的开源项目就是佐证。下面来介绍一下实现方式。
 
 操作系统的命令行会运行你的npm scripts。因此，在Linux与OS X上，npm scripts会在Unix命令行中运行。在Windows上，npm scripts则运行在Windows命令行中。这样，如果希望构建脚本能够运行在所有平台上，你需要适配Unix与Windows。下面介绍3种实现方式：
 
-####方式1：使用跨平台的命令
+#### 方式1：使用跨平台的命令
 
 有很多跨平台的命令可供我们使用。下面列举一些：
 ```
@@ -147,7 +148,7 @@ npm run script1.js & npm run script2.js
 >  将命令输出重定向到文件
 | 将一个命令的输出重定向到另一个命令
 ```
-####方式2：使用node包
+#### 方式2：使用node包
 
 可以使用node包来代替shell命令。比如说，使用[rimraf](https://www.npmjs.com/package/rimraf)来代替“rm -rf`”。使用[cross-env](https://www.npmjs.com/package/cross-env)以跨平台的方式设置环境变量。搜索Google、npm或是[libraries.io](https://libraries.io/)，寻找你所需要的，几乎都会有相应的node包以跨平台的方式实现你的目标。如果命令行调用过长，你可以在单独的脚本中调用Node包，就像下面这样：
 ```
@@ -155,7 +156,7 @@ node scriptName.js
 ```
 上述脚本就是普通的JavaScript，由Node运行。既然是在命令行调用了脚本，那么你就不会受限于.js文件。你可以运行操作系统所能执行的任何脚本，比如说Bash、Python、Ruby或是Powershell等等。
 
-####方式3：使用[ShellJS](https://www.npmjs.com/package/shelljs)
+#### 方式3：使用[ShellJS](https://www.npmjs.com/package/shelljs)
 
 ShellJS是个通过Node来运行Unix命令的npm包。这样就可以通过它在所有平台上运行Unix命令了，也包括Windows。
 
@@ -163,7 +164,7 @@ ShellJS是个通过Node来运行Unix命令的npm包。这样就可以通过它�
 
 接下来将会介绍npm scripts中存在的一些痛点以及解决之道。
 
-##痛点
+## 痛点
 
 显然，使用npm scripts也存在着一些问题：JSON规范并不支持注释，因此无法在package.json中添加注释。不过有一些办法可以突破这个限制：
 
@@ -176,7 +177,7 @@ Package.json也不支持变量。这看起来貌似是个大问题，但实际�
 
 最后，还存在一种风险，那就是使用长长的、复杂的命令行参数，这些参数令人难以理解。代码审查与重构是确保npm脚本保持小巧、命名良好、单一职责，且每个人都能容易理解的好方式。如果脚本复杂到需要注释，那么你应该将单个脚本重构为多个命名良好的脚本，或是将其抽取为单独的文件。
 
-###我们需要证明抽象是有意义的
+### 我们需要证明抽象是有意义的
 
 Gulp与Grunt是对我所使用的工具的抽象。抽象是很有用的，不过抽象是有代价的。它让我们过分依赖于插件维护者与文档，同时随着插件数量的不断攀升，他们也不断引入复杂性。此外不少开发者与此观点不谋而合，比如说下面这些：
 
@@ -188,7 +189,7 @@ Gulp与Grunt是对我所使用的工具的抽象。抽象是很有用的，不�
 - [NPM Scripts for Build Tooling](http://code.tutsplus.com/courses/npm-scripts-for-build-tooling)—Andrew Burgess
 
 
-##npm替换方案参考
+## npm替换方案参考
 近来直接使用node package提供的命令行界面的情绪愈发高涨，反之，人们对通过运行任务从而屏蔽抽象功能的热情逐渐降温。在一定程度是，你无论如何都要使用npm，而同时npm也提供了脚本功能，为什么不用呢？
 
 Grunt, Gulp, Broccoli, Brunch和类似的工具都需要将自己的任务配置的适合他们的范型和结构，这些工具每一个都需要学习他们不同的语法、奇怪的用法和特有的方法。这增加了编码复杂度、构建复杂度，使得你关注修复工具问题更甚于写代码。
@@ -201,7 +202,7 @@ Grunt, Gulp, Broccoli, Brunch和类似的工具都需要将自己的任务配置
 
 如果你现在做好决定想要调研或使用npm scripts，那么请继续阅读本文！本文将会提供大量的案例任务，同时基于这些任务我也创建了npm-build-boilerplate 以方便你学习。那么下面让我们开始吧！
 
-###写npm scripts
+### 写npm scripts
 
 我们会花费大量的时间在`package.json`文件上。这个文件描述了我们需要的所有的依赖和脚本。以下是我的boilerplate项目中的一部分内容：
 
@@ -222,7 +223,7 @@ Grunt, Gulp, Broccoli, Brunch和类似的工具都需要将自己的任务配置
 接下来我们将逐步创建`package.json`文件。我们的脚本会写入scripts对象中，所有我们要使用的工具都会被安装并且写入devDependencies对象中。在开始之前，以下是本文中的项目结构:
 ![项目结构](https://cdn.css-tricks.com/wp-content/uploads/2016/02/directory.png)
 
-###编译scss为css
+### 编译scss为css
 
 为了将SCSS编译成CSS，我使用了node-sass。首先，我们需要安装node-sass，在命令行下运行以下代码：
 ```
@@ -254,7 +255,7 @@ npm run scss
   "scss": "node-sass --output-style nested --indent-type tab --indent-width 4 -o dist/css src/scss"
 }
 ```
-###使用PostCSS自动给CSS加前缀
+### 使用PostCSS自动给CSS加前缀
 
 我们已经能够把SCSS编译成CSS，现在我们希望通过Autoprefixer和PostCSS自动给CSS代码添加厂商前缀，我们可以通过空格分隔的方式从而同时安装多个模块：
 ```
@@ -273,7 +274,7 @@ npm install --save-dev postcss-cli autoprefixer
 "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '&gt; 5%, ie 9' -r dist/css/*"
 ```
 再次申明，配置你自己的构建代码有很多选项可以使用：postcss-cli 和 autoprefixer。
-###JavaScript 代码检查
+### JavaScript 代码检查
 
 对于写代码来说，保持标准格式和样式是非常重要的，它能够确保错误最小化并提高开发效率。"代码检查"帮助我们自动化的完成了这个工作，所以我们通过使用 eslint 来进行代码检查。
 
@@ -297,7 +298,7 @@ eslint --init // 译者注：这里直接使用会抛错eslint找不到，因为
 ```
 我们的任务仅有13字符！它会查找`src/js`目录下的所有JavaScript文件，并根据刚才生成的规则进行代码检测。当然，如果感兴趣的话你可以详细配置各种规则：[get crazy with the options](http://eslint.org/docs/user-guide/command-line-interface#options)
 
-###混淆压缩JavaScript文件
+### 混淆压缩JavaScript文件
 
 让我们继续，下面我们需要使用uglify-js来混淆压缩JavaScript文件，首先需要安装uglify-js：
 ```
@@ -323,7 +324,7 @@ npm scripts的任务的本质是：可以重复执行的、命令行任务的快
   "uglify": "mkdir -p dist/js && uglifyjs src/js/*.js -m -o dist/js/app.js && uglifyjs src/js/*.js -m -c -o dist/js/app.min.js"
 }
 ```
-###压缩图片
+### 压缩图片
 
 下面我们将进行图片压缩的工作。根据httparchive.org的数据统计，网络上前1000名的网站平均页面大小为1.9M,其中图片占了1.1M（with images accounting for 1.1mb of that total）。所以提高网页加载速度的其中一个好办法就是减小图片大小。
 
@@ -340,7 +341,7 @@ Imagemin非常棒，它可以压缩大多数图片类型，包括GIF、JPG、PNG
 ```
 这个任务告诉imagemin找到并压缩`src/images`中的所有图片并输出到`dist/images`中。-p标志在允许的情况下将图片处理成渐进图片。更多配置可查看文档 all available options
 
-###SVG精灵（Sprites）
+### SVG精灵（Sprites）
 
 关于SVG的讨论近年来逐渐火热，SVG有众多优点：在所有的设备上保持松散结构、可通过CSS编辑、对读屏软件友好。然而，SVG编辑软件经常会产生大量的冗余代码。幸运的是，svgo可以帮助你自动删除这些冗余信息（我们马上就会安装svgo）。
 
@@ -357,7 +358,7 @@ npm i -D svgo svg-sprite-generator
 ```
 注意icons任务通过两个&&引导符做了三件事情： 1.使用svgo传参一个SVG目录（-f标识），这个操作压缩了目录内的全部SVG文件；2.如果不存在'dist/images'目录则创建该目录（使用mkdir -p命令）；3.使用svg-sprite-generator，传参一个SVG目录（-d标识）以及输出处理后的SVG文件的目录路径名（-o标识）。
 
-###通过BrowserSync提供服务、自动监测并注入变更
+### 通过BrowserSync提供服务、自动监测并注入变更
 
 最后一个插件是BrowserSync，它可以做如下事情：启动一个本地服务，向连接的浏览器自动注入更新的文件，并同步浏览器的点击和滚动。安装并添加任务的代码如下：
 ```
@@ -371,7 +372,7 @@ BrowserSync任务默认使用当前根目录下的路径启动一个服务器（
 
 你可以同时打开多个浏览器（甚至在不同的设备上），他们都会实时更新文件变化的！
 
-###分组任务
+### 分组任务
 
 使用以上任务我们可以做到如下功能：
 
@@ -382,7 +383,7 @@ BrowserSync任务默认使用当前根目录下的路径启动一个服务器（
 启动一个本地服务并向连接至该服务的浏览器自动注入更新。
 这还不是全部内容！
 
-###合并CSS任务
+### 合并CSS任务
 
 我们会添加一个新的任务，用于合并两个CSS相关的任务（处理SASS和执行加前缀的Autoprefixer），有了这个任务我们就不用分别执行两个相关任务了：
 ```
@@ -395,7 +396,7 @@ BrowserSync任务默认使用当前根目录下的路径启动一个服务器（
 
 就像这个build:css任务一样，我们可以把JavaScript任务也链接到一起以方便执行：
 
-###合并JavaScript任务
+### 合并JavaScript任务
 ```
 "scripts": {
   ...
@@ -414,7 +415,7 @@ BrowserSync任务默认使用当前根目录下的路径启动一个服务器（
   "build:all": "npm run build:css && npm run build:js && npm run build:images",
 }
 ```
-###变更监控
+### 变更监控
 
 至此，我们的任务不断的需要对文件做一些变更，我们不断的需要切回命令行去运行相应的任务。针对这个问题，我们可以添加一个任务来监听文件变更，让文件在变更的时候自动执行这些任务。这里我推荐使用onchange插件，安装方法如下：
 ```
@@ -451,7 +452,7 @@ parallelshell支持多个参数字符串，它会给npm run传多个任务用于
 
 这个任务使用了BrowserSync的npm run serve任务启动了一个服务，然后对CSS和JavaScript文件执行了监控命令，一旦CSS或JavaScript文件有变更，监控任务就会执行相应的构建（build）任务。由于BrowserSync被设置成监控`dist`目录下的变更，所以它会自动的向相关联的URL内注入新的文件，真是太棒了！
 
-###其他实用任务
+### 其他实用任务
 
 npm有大量可以实用的插件（[ots of baked in tasks](https://docs.npmjs.com/misc/scripts#description) ），让我们再添加一个新的任务来看看这些插件对构建脚本的影响：
 ```

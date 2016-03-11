@@ -4,9 +4,9 @@ categories: 兼容性
 tags: [兼容性,移动端,Android]
 ---
 
-###问题情况
+### 问题情况
 今天遇到一个问题，在Android设备下scrollTop()方法无法正常执行。
-###解决办法
+### 解决办法
 相关参考了一些解决办法之后，了解问题如下:
 解决办法大致如下：
 
@@ -26,7 +26,7 @@ tags: [兼容性,移动端,Android]
 $(yourSelector).addClass("androidFix").scrollTop(0).removeClass("androidFix");
 ```
 <br>
-###相关参考
+### 相关参考
 一篇不错的各浏览器内核使用scrollTop方法介绍：[如何正确的获取scrollTop/scrollLeft的值](http://bbs.csdn.net/topics/340198399)
 
 

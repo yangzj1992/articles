@@ -4,7 +4,7 @@ categories: 微信X5浏览器
 tags: [微信浏览器,ajax,gzip,性能优化,HTTP]
 ---
 
-###情况
+### 情况
 今天在做微信项目用ajax传值时发现了一些异常的现象。使用微信版本:6.3.7
 
 ![异常ajax列表](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/yichang1.png)
@@ -25,7 +25,7 @@ tags: [微信浏览器,ajax,gzip,性能优化,HTTP]
 
 ![清理头](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_kill_gzip_header.png)
 
-###w3标准
+### w3标准
 由于在w3.org中关于[XMLHttpRequest](http://www.w3.org/TR/XMLHttpRequest/)的描述中指出
 
 > 4.6.2 The setRequestHeader() method
@@ -83,7 +83,7 @@ $.ajax({
 
 通过测试最后得到结论：IE还是跟往常一样无视标准的存在，可以用JavaScript在ajax请求中设置User-Agent，而FireFox和Chrome都无法修改User-Agent。
 
-###其余网站验证
+### 其余网站验证
 之后我测试了一米鲜和京东的相关页面，也发现了类似的情况。这里拿JD举例。
 
 在微信中未压缩请求diviner大小,17.53kb.
@@ -100,7 +100,7 @@ $.ajax({
 ![jd](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/mobile_chrome_jd_header.png)
 
 
-###gzip配置说明
+### gzip配置说明
 另外在这个过程中还核对了nginx的gzip模块配置：
 这里顺便一路贴出来把。。
 

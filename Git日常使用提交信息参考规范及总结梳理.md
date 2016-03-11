@@ -7,7 +7,7 @@ tags: [Git]
 本篇大多数内容参考自阮一峰博文[Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
 并总结了Git的一些命令来协助各位程序员们可以在年终时依靠Git总结代码提交的方法。
 
-##Commit message 和 Change log 编写指南（转载内容）
+## Commit message 和 Change log 编写指南（转载内容）
 作者： [阮一峰](http://www.ruanyifeng.com)
 日期： [<abbr class="published" title="2016-01-06T21:23:23+08:00">2016年1月 6日</abbr>](http://www.ruanyifeng.com/blog/2016/01/)
 Git 每次提交代码，都要写 Commit message（提交说明），否则就不允许提交。
@@ -26,7 +26,7 @@ $ git commit
 
 目前，社区有多种 Commit message 的[写法规范](https://github.com/ajoslin/conventional-changelog/tree/master/conventions)。本文介绍[Angular 规范](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.greljkmo14y0)（如上图），这是目前使用最广的写法，比较合理和系统化，并且有配套的工具。
 
-###一、Commit message 的作用
+### 一、Commit message 的作用
 格式化的Commit message，有几个好处。
 
 ####（1）提供更多的历史信息，方便快速浏览。
@@ -43,7 +43,7 @@ $ git log <last release> HEAD --grep feature
 ####（3）可以直接从commit生成Change log。
 Change Log 是发布新版本时，用来说明与上一个版本差异的文档，详见后文。
 ![git-change-log-example](http://qcyoung.qiniudn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/git-change-log-example.png)
-###二、Commit message 的格式
+### 二、Commit message 的格式
 每次提交，Commit message 都包括三个部分：Header，Body 和 Footer。
 ```
 <type>(<scope>): <subject>
@@ -54,7 +54,7 @@ Change Log 是发布新版本时，用来说明与上一个版本差异的文档
 ```
 其中，Header 是必需的，Body 和 Footer 可以省略。
 不管是哪一个部分，任何一行都不得超过72个字符（或100个字符）。这是为了避免自动换行影响美观。
-####2.1 Header
+#### 2.1 Header
 Header部分只有一行，包括三个字段：`type`（必需）、`scope`（可选）和`subject`（必需）。
 #####（1）type
 `type`用于说明 commit 的类别，只允许使用下面7个标识。
@@ -78,7 +78,7 @@ chore：构建过程或辅助工具的变动
 结尾不加句号（.）
 ```
 
-####2.2 Body
+#### 2.2 Body
 Body 部分是对本次 commit 的详细描述，可以分成多行。下面是一个范例。
 ```
 More detailed explanatory text, if necessary.  Wrap it to 
@@ -93,7 +93,7 @@ Further paragraphs come after blank lines.
 有两个注意点。
 （1）使用第一人称现在时，比如使用`change`而不是`changed`或`changes`。
 （2）应该说明代码变动的动机，以及与以前行为的对比。
-####2.3 Footer
+#### 2.3 Footer
 Footer 部分只用于两种情况。
 #####（1）不兼容变动
 如果当前代码与上一个版本不兼容，则 Footer 部分以`BREAKING CHANGE`开头，后面是对变动的描述、以及变动理由和迁移方法。
@@ -125,7 +125,7 @@ Closes #234
 ```
 Closes #123, #245, #992
 ```
-####2.4 Revert
+#### 2.4 Revert
 还有一种特殊情况，如果当前 commit 用于撤销以前的 commit，则必须以`revert:`开头，后面跟着被撤销 Commit 的 Header。
 ```
 revert: feat(pencil): add 'graphiteWidth' option
@@ -134,7 +134,7 @@ This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
 ```
 Body部分的格式是固定的，必须写成`This reverts commit &lt;hash>`.，其中的`hash`是被撤销 commit 的 SHA 标识符。
 如果当前 commit 与被撤销的 commit，在同一个发布（release）里面，那么它们都不会出现在 Change log 里面。如果两者在不同的发布，那么当前 commit，会出现在 Change log 的`Reverts`小标题下面。
-###三、Commitizen
+### 三、Commitizen
 [Commitizen](https://github.com/commitizen/cz-cli)是一个撰写合格 Commit message 的工具。
 安装命令如下。
 ```
@@ -146,7 +146,7 @@ $ commitizen init cz-conventional-changelog --save --save-exact
 ```
 以后，凡是用到`git commit`命令，一律改为使用`git cz`。这时，就会出现选项，用来生成符合格式的 Commit message。
 ![angular-commit-log-style](http://qcyoung.qiniudn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/angular-commit-log-style.png)
-###四、validate-commit-msg
+### 四、validate-commit-msg
 [validate-commit-msg](https://github.com/kentcdodds/validate-commit-msg) 用于检查 Node 项目的 Commit message 是否符合格式。
 它的安装是手动的。首先，拷贝下面这个[JS文件](https://github.com/kentcdodds/validate-commit-msg/blob/master/index.js)，放入你的代码库。文件名可以取为`validate-commit-msg.js`。
 接着，把这个脚本加入 Git 的 hook。下面是在`package.json`里面使用[ghooks](https://www.npmjs.com/package/ghooks)，把这个脚本加为`commit-msg`时运行。
@@ -163,7 +163,7 @@ $ git add -A
 $ git commit -m "edit markdown" 
 INVALID COMMIT MSG: does not match "<type>(<scope>): <subject>" ! was: edit markdown
 ```
-###五、生成 Change log
+### 五、生成 Change log
 如果你的所有 Commit 都符合 Angular 格式，那么发布新版本时， Change log 就可以用脚本自动生成（[例1](https://github.com/ajoslin/conventional-changelog/blob/master/CHANGELOG.md)，[例2](https://github.com/karma-runner/karma/blob/master/CHANGELOG.md)，[例3](https://github.com/btford/grunt-conventional-changelog/blob/master/CHANGELOG.md)）。
 生成的文档包括以下三个部分。
 ```
@@ -197,7 +197,7 @@ $ npm run changelog
 （完）
 ```
 
-##git log统计常用方法
+## git log统计常用方法
 另外通过git log 的很多特性我们也可以在例如年终的时候通过git总结一下自己的记录。
 
 - 例如我们想取得版本库中所有人commit统计记录。

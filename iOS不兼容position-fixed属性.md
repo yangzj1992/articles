@@ -4,10 +4,10 @@ categories: 兼容性
 tags: [兼容性,移动端,iOS]
 ---
 
-###问题情况
+### 问题情况
 在移动端开发过程中如果在头部或底部设置position:fixed的元素，可能会在ios8以下的系统中出现以下问题，当用户进行输入时系统键盘激活，此类fixed的元素会出现位置浮动问题。类似如下图所示：
 ![position:fixed](http://qcyoung.qiniudn.com/qcyoung/iOS不兼容position-fixed属性/ios_position_fixed.jpeg)
-###解决办法
+### 解决办法
 解决办法大致如下：
 确保自己的页面已引入浏览器适应性meta
 
@@ -40,7 +40,7 @@ if (isIOS) {
 
 或使用:iscroll.js框架
 
-###额外参考
+### 额外参考
 另外iOS系统中目前针对fixed的元素还会出现闪烁的现象，具体表现为呼出系统键盘，元素在一定时间后才回归原位。
 
 具体的移动端fixed兼容性情况原因在阿里的支付宝开发经验中有详细讲过[无线Web开发经验谈](http://am-team.github.io/amg/dev-exp-doc.html)
