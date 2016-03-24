@@ -1,0 +1,27 @@
+{
+  "name": "articles",
+  "version": "1.0.0",
+  "description": "articles in qcyoung.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangzj1992/articles.git"
+  },
+  "author": "yangzj1992",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yangzj1992/articles/issues"
+  },
+  "homepage": "https://github.com/yangzj1992/articles#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^1.1.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
