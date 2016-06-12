@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/yangzj1992/articles#readme",
   "devDependencies": {
-    "cz-conventional-changelog": "^1.1.5"
+    "cz-conventional-changelog": "^1.1.6"
   },
   "config": {
     "commitizen": {
