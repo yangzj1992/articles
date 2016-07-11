@@ -29,18 +29,18 @@ $ git commit
 ### 一、Commit message 的作用
 格式化的Commit message，有几个好处。
 
-####（1）提供更多的历史信息，方便快速浏览。
+#### （1）提供更多的历史信息，方便快速浏览。
 比如，下面的命令显示上次发布后的变动，每个commit占据一行。你只看行首，就知道某次 commit 的目的。
 ```
 $ git log <last tag> HEAD --pretty=format:%s
 ```
 ![git-log-pretty](http://qcyoung.qiniudn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/git-log-pretty.png)
-####（2）可以过滤某些commit（比如文档改动），便于快速查找信息。
+#### （2）可以过滤某些commit（比如文档改动），便于快速查找信息。
 比如，下面的命令仅仅显示本次发布新增加的功能。
 ```
 $ git log <last release> HEAD --grep feature
 ```
-####（3）可以直接从commit生成Change log。
+#### （3）可以直接从commit生成Change log。
 Change Log 是发布新版本时，用来说明与上一个版本差异的文档，详见后文。
 ![git-change-log-example](http://qcyoung.qiniudn.com/qcyoung/Git日常使用提交信息参考规范及总结梳理/git-change-log-example.png)
 ### 二、Commit message 的格式
@@ -56,7 +56,7 @@ Change Log 是发布新版本时，用来说明与上一个版本差异的文档
 不管是哪一个部分，任何一行都不得超过72个字符（或100个字符）。这是为了避免自动换行影响美观。
 #### 2.1 Header
 Header部分只有一行，包括三个字段：`type`（必需）、`scope`（可选）和`subject`（必需）。
-#####（1）type
+##### （1）type
 `type`用于说明 commit 的类别，只允许使用下面7个标识。
 ```doc
 feat：新功能（feature）
@@ -68,9 +68,9 @@ test：增加测试
 chore：构建过程或辅助工具的变动
 ```
 如果`type`为`feat`和`fix`，则该 commit 将肯定出现在 Change log 之中。其他情况（`docs`、`chore`、`style`、`refactor`、`test`）由你决定，要不要放入 Change log，建议是不要。
-#####（2）scope
+##### （2）scope
 `scope`用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。
-#####（3）subject
+##### （3）subject
 `subject`是 commit 目的的简短描述，不超过50个字符。
 ```
 以动词开头，使用第一人称现在时，比如change，而不是changed或changes
@@ -95,7 +95,7 @@ Further paragraphs come after blank lines.
 （2）应该说明代码变动的动机，以及与以前行为的对比。
 #### 2.3 Footer
 Footer 部分只用于两种情况。
-#####（1）不兼容变动
+##### （1）不兼容变动
 如果当前代码与上一个版本不兼容，则 Footer 部分以`BREAKING CHANGE`开头，后面是对变动的描述、以及变动理由和迁移方法。
 ```
 BREAKING CHANGE: isolate scope bindings definition has changed.
@@ -197,7 +197,7 @@ $ npm run changelog
 （完）
 ```
 
-## git log统计常用方法
+## git log 统计常用方法
 另外通过git log 的很多特性我们也可以在例如年终的时候通过git总结一下自己的记录。
 
 - 例如我们想取得版本库中所有人commit统计记录。
@@ -210,7 +210,7 @@ $ git shortlog -sne (n为次数排序，e为显示邮箱）
 299  lizhenfa <lizhenfa@meicai.cn>
 ...... 
 ```
-自8月18日起到1月13日今日我在公司项目的提交次数达到988次。感觉有点多了。提交commit的质量可能需要控制一下。
+自 8 月 18 日起到 1 月 13 日今日我在公司项目的提交次数达到 988 次。感觉有点多了。提交 commit 的质量可能需要控制一下。
 
 - 统计自己的代码提交量，包括增加，删除：
 
@@ -219,7 +219,7 @@ $ git log --author="$(git config --get user.name)" --pretty=tformat: --numstat |
 得到结果如下
 added lines: 15490 removed lines : 57870 total lines: -42380
 ```
-上面这个情况确实只能说明我重(shan)构(chu)了不少冗余东西=. =。不过马上这个项目又要基于ES6+vue重写一下。只能说可能发展快速、人员更迭迅速的创业公司的项目可能或多或少都存在这种代码质量难以保证的情况吧？
+上面这个情况确实只能说明我重(shan)构(chu)了不少冗余东西=. =。不过马上这个项目又要基于 ES6 + Vue 重写一下。只能说可能发展快速、人员更迭迅速的创业公司的项目可能或多或少都存在这种代码质量难以保证的情况吧？
 
 - 统计仓库提交者排名前 5
 
@@ -235,5 +235,5 @@ $ git log --pretty='%aN' | sort -u | wc -l
 
 39
 ```
-这个项目前后有39个人曾参与过,创业公司..大家应该都懂..
+这个项目前后有 39 个人曾参与过,创业公司..大家应该都懂..
 
