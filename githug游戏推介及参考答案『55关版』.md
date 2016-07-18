@@ -9,7 +9,7 @@ tags: [Git]
 
 当然这些游戏练习只是帮助熟悉，难度基本属于日常操作，如果是git新手最好的学习方法还是先看一遍 [git 文档](https://git-scm.com/book/zh/v2)
 
-githug 题目 list(更新日期为2016-01-03)
+githug 题目 list（更新日期为2016-01-03）
 
 ```
 #1: init

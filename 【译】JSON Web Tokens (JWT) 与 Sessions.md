@@ -26,11 +26,11 @@ _这篇文章发布于[黑客新闻](https://news.ycombinator.com/item?id=119292
   
 *   **护照** - 你通过"护照办"获得的 JWT 签名。你的身份对于任何人都是可读的，但是只有它是真实的时候相关方才会对其核实。
 
-*   **公民资格** - 在 JWT 中包含的你的声明(你的护照)。
+*   **公民资格** - 在 JWT 中包含的你的声明（你的护照）。
 
 *   **边境** - 你的应用程序的安全层，在被允许访问受保护的资源之前由它来核实你的 JWT 令牌身份，在这种情况下指的是 - 国家。 
 
-*   **国家** - 你想要获取的资源(例如 API)。
+*   **国家** - 你想要获取的资源（例如 API）。
 
 ## 看啊！没有 session!
 
@@ -64,19 +64,19 @@ _这篇文章发布于[黑客新闻](https://news.ycombinator.com/item?id=119292
 
 > 一个 JWT 的声明内容会被编码为一个 JSON 对象，它被作为 JSON 网络签名结构的有效载荷或是作为 JSON 网络加密结构的明文信息。
 
-前者给我们的只是一个签名并且它包含的数据(或是平时所称呼的 "claims" 的命名)是对任何人都可读的。后者则提供了加密的内容，所以只有拥有密钥的人可以解密它。JWS 在实现上更加容易并且基本用法上是不需要加密的 - 毕竟如果你在客户端上有密钥的话，你还不如把所有的东西不加密的好。因此 JWS 在大多数情况下都是适用的，也因此在之后我将主要关注 JWS。
+前者给我们的只是一个签名并且它包含的数据（或是平时所称呼的 "claims" 的命名）是对任何人都可读的。后者则提供了加密的内容，所以只有拥有密钥的人可以解密它。JWS 在实现上更加容易并且基本用法上是不需要加密的 - 毕竟如果你在客户端上有密钥的话，你还不如把所有的东西不加密的好。因此 JWS 在大多数情况下都是适用的，也因此在之后我将主要关注 JWS。
 
 ### 那么 JWT/JWS 是由什么构成的？
 
 *   **头部** - 关于签名算法的信息，以 JSON 格式的负载类型(JWT)等等。
 
-*   **负载** - JSON 格式的实际的数据(或是声明)。
+*   **负载** - JSON 格式的实际的数据（或是声明）。
 
 *   **签名** - 额... 就是签名。
    
 我将在之后具体解释这些细节。现在让我们先来分析下基础要素。
 
-上述所提到的每一部分(头部，负载和签名）是基于 base64url 编码的，然后他们用 '.' 作为分隔符粘连起来组成 JWT。 下面是这个实现方式可能看上去的样子：
+上述所提到的每一部分（头部，负载和签名）是基于 base64url 编码的，然后他们用 '.' 作为分隔符粘连起来组成 JWT。 下面是这个实现方式可能看上去的样子：
 
 ```
 var header = {  
@@ -128,9 +128,9 @@ if (atob(signatureB64) === signatureCreatingFunction(headerB64 + '.' + payloadB6
 
 事实上，JWT 头部被称为 JOSE 头部。JOSE 表示的是 JSON 对象的签名和加密。也正如你期望的那样，JWS 和 JWE 都是这样的一个头部，然而它们各自之间存在着一套稍微不同的注册参数。下面是在 JWS 中使用的头部注册参数列表。所有的参数除了第一个参数（alg）以外，其他参数都是可选的：
 
-*   **alg** 算法 (必选项)
+*   **alg** 算法 （必选项）
 
-*   **typ** 类型 (如果是 JWT 那么就带有一个值 `JWT`，如果存在的话)
+*   **typ** 类型 （如果是 JWT 那么就带有一个值 `JWT`，如果存在的话）
 
 *   **kid** 密钥 ID
 
@@ -161,7 +161,7 @@ if (atob(signatureB64) === signatureCreatingFunction(headerB64 + '.' + payloadB6
 
 上面列出的第三个参数 `kid` 是基于安全原因使用的。`cty` 参数在另一方面应该只被用于处理嵌套的 JWT。剩下的参数你可以在[规范文档](https://tools.ietf.org/html/rfc7515#section-4.1)中阅读了解，我认为它们不适合在这篇文章中被提及。
 
-#### `alg` (算法)
+#### `alg` （算法）
 
 `alg` 参数的值可以是 [JSON 网络算法(JWA)](https://tools.ietf.org/html/rfc7518#section-3.1)中的任意指定值 - 这是我所知道的另一个规范。下面是 JWS 的注册列表：
 
@@ -195,19 +195,19 @@ if (atob(signatureB64) === signatureCreatingFunction(headerB64 + '.' + payloadB6
 
 底线是，你的应用的安全层应该总是对头部的 `alg` 参数进行校验。那里就是 `kid` 参数用的上的地方。
 
-#### `typ` (类型)
+#### `typ` （类型）
 
 这一个参数非常简单。如果它是已知的，那么它就是 JWT，因为应用不会去索取其他的值，如果这个参数没有值就会被忽视掉。因此它是可选的。如果需要被指定值，它应该按大写字母拼写 - `JWT` 。
 
 在某些情况下，当应用程序接受到没有 JWT 类型的请求却又包含了 JWT 时，去重新指定它是很重要的，因为这样应用程序才不会崩溃。
 
-#### `kid` (密钥 id)
+#### `kid` （密钥 id）
 
 如果你的应用程序中的安全层只使用了一个算法来签名 JWTs，你不用太担心 `alg` 参数，因为你会总是使用相同的密钥和算法来校验令牌的完整性。但是，如果你的应用程序使用了一堆不同的算法和密钥，你就需要能够分辨出是由谁签署的令牌。
 
 正如我们之前看到的，单独依靠 `alg` 参数可能会导致一些...不便。然而，如果你的应用维护了一个密钥/算法的列表，并且每一对都有一个名称(id)，你可以添加这个密钥 id 到头部，这样在之后验证 JWT 时你会有更多的信心去选择算法。这就是头部参数 `kid` - 你的应用中用来签名令牌所使用的密钥 id 。这个 id 是由你来任意指定的。最重要的是 - 这是你给的 id ，所以你可以验证。
 
-#### `cty` (内容类型)
+#### `cty` （内容类型）
 
 这里把[规范](https://tools.ietf.org/html/rfc7519#section-5.2)介绍的很清楚，所以这里我就只是引用了：
 
@@ -235,29 +235,29 @@ if (atob(signatureB64) === signatureCreatingFunction(headerB64 + '.' + payloadB6
 
 *   **jti** - JWT ID
 
-值得注意的是，除了最后三个(issuer ，audience 和 JWT ID)参数通常是在更复杂的情况下(例如包含多个发行者时)才被使用。下面让我们来讨论一下它们吧。
+值得注意的是，除了最后三个(issuer ，audience 和 JWT ID)参数通常是在更复杂的情况下（例如包含多个发行者时）才被使用。下面让我们来讨论一下它们吧。
 
-#### `exp` (过期时间)
+#### `exp` （过期时间）
 
 `exp` 是时间戳值表示着在什么时候令牌会失效。规范上要求"当前日期/时间"必须在指定的 `exp` 值之前，从而保证令牌可以得到处理。这里也表明了存在一些余地（几分钟）来应对时间差。
 
-#### `nbf` (有效起始时间)
+#### `nbf` （有效起始时间）
 
 `nbf` 是时间戳值表示着在什么时候令牌开始生效。规范上要求"当前日期/时间"必须与指定的 `nbf` 值相等或在其之后，从而保证令牌可以得到处理。这里也表明了存在一些余地（几分钟）来应对时间差。
 
-#### `iat` (发行时间)
+#### `iat` （发行时间）
 
 `iat` 是时间戳值表示什么时候令牌被发行。
 
-#### `sub` (主题)
+#### `sub` （主题）
 
 `sub` 在规范上被要求"是JWT 中的声明中通常用于陈述主题的值"。这里主题必须是内容中唯一的发行者或全局上的唯一值。`sub` 声明可以用来鉴别用户，例如 [JIRA](https://developer.atlassian.com/static/connect/docs/latest/concepts/understanding-jwt.html#token-structure-claims) 文档上那样。
 
-#### `iss` (发行者)
+#### `iss` （发行者）
 
 `iss` 是被用来确认令牌的发行者的字符串值。如果值中包含 `:` 那么它就是一个 URI。如果有很多的发行者而在一个安全层中应用程序需要去识别发行人时，它将会是有用的。例如 [Salesforce](https://help.salesforce.com/HTViewHelpDoc?id=remoteaccess_oauth_jwt_flow.htm) 要求了去使用 OAuth client_id 来作为 `iss` 的值。
 
-#### `aud` (受众)
+#### `aud` （受众）
 
 `aud` 是被用来确认令牌的可能接受者的字符串值或数组。如果值中包含 `:` 那么它就是一个 URI。
 通常使用 URI 资源的声明是有效的。例如，在 [OAuth](https://tools.ietf.org/html/rfc7523#section-3) 中，接受者是授权服务器。应用程序处理令牌时，在针对不同的接受者的情况下，必须验证接受者是否是正确的或者拒绝令牌。
@@ -268,7 +268,7 @@ if (atob(signatureB64) === signatureCreatingFunction(headerB64 + '.' + payloadB6
 
 ## 如何在我的应用中使用 JWT ?
 
-在最常见的场景中，客户端的浏览器将在认证服务中认证并接受返回的 JWT。然后客户端用某种方式(如内存，localStorage)存储这个令牌并与受保护的资源一起发送返回。通常令牌发送时是作为 cookie 或是 HTTP 请求中 `Authorization` 头部。
+在最常见的场景中，客户端的浏览器将在认证服务中认证并接受返回的 JWT。然后客户端用某种方式（如内存，localStorage)存储这个令牌并与受保护的资源一起发送返回。通常令牌发送时是作为 cookie 或是 HTTP 请求中 `Authorization` 头部。
 
 ```
 GET /api/secured-resource HTTP/1.1  
@@ -276,9 +276,9 @@ Host: example.com
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJhZG1pbiI6dHJ1ZX0.OLvs36KmqB9cmsUrMpUutfhV52_iSz4bQMYJjkI_TLQ 
 ```
 
-首选头部方法是出于安全的原因 - cookies 会很容易受 [CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery) (跨站请求伪造)的影响，除非 CSRF 令牌是使用过的。
+首选头部方法是出于安全的原因 - cookies 会很容易受 [CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery)（跨站请求伪造）的影响，除非 CSRF 令牌是使用过的。
 
-其次，cookies 只能发送返回到被发出的相同的域下(或者最多二级域下)。如果身份验证服务驻留在不同的域下，那么 cookies 得需要更强烈的创造性才行。
+其次，cookies 只能发送返回到被发出的相同的域下（或者最多二级域下）。如果身份验证服务驻留在不同的域下，那么 cookies 得需要更强烈的创造性才行。
 
 ### 如何通过 JWT 登出?
 
@@ -288,7 +288,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb
 
 我认为 JWTs 是一个在脱离 sessions 的情况下非常聪明的授权方式。它允许创建真正的服务端无状态的基于 RESTful 的服务，这也意味着不需要 session 存储。
 
-与浏览器自动发送 session cookie 到任意匹配域/路径组合(老实说，在大多数情况下这里只有域的情况)的 URL 不一样的是，JWTs 可以选择性的只向需要身份授权的资源来发送。
+与浏览器自动发送 session cookie 到任意匹配域/路径组合（老实说，在大多数情况下这里只有域的情况）的 URL 不一样的是，JWTs 可以选择性的只向需要身份授权的资源来发送。
 
 对于客户端和服务端来说，它的实现非常简单，特别是已经有[专门的库](https://jwt.io/#libraries-io)来制造签名和验证令牌了。
 

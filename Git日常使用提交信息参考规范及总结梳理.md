@@ -203,7 +203,7 @@ $ npm run changelog
 - 例如我们想取得版本库中所有人commit统计记录。
 
 ```
-$ git shortlog -sne (n为次数排序，e为显示邮箱）
+$ git shortlog -sne （n为次数排序，e为显示邮箱）
 得到结果如下
 537  yangzj1992 <yangzj1992@qq.com>
 451  杨忠璟 <yangzhongjing@sprucetec.com>

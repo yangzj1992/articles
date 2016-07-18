@@ -95,7 +95,7 @@ tags: [浏览器,表单,input,HTML5,兼容性]
    
    在 Chrome 中，input 元素的 validity.badInput 这个属性里，可以判断值是否合法，如果填入了非法值，这个属性就是 true，正常值的话就是 false。
 
-   但是火狐下.validity 里没有 badInput 属性，如下图，它可以直接通过.value 正常返回非数字的字符串。（微信 X5 同样也这样..)
+   但是火狐下.validity 里没有 badInput 属性，如下图，它可以直接通过.value 正常返回非数字的字符串。（微信 X5 同样也这样..）
    ![安卓微信](http://qcyoung.qiniudn.com/qcyoung/type-number非法值的一些探究及拓展/安卓微信，valid对象有的属性.png)
 
    而 IE8、9 则也可以直接 .value 获取到非数字的字符串值，不会返回空字符串。

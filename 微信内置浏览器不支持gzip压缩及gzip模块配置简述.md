@@ -1,7 +1,7 @@
 title: 微信内置浏览器不支持gzip压缩方式及gzip模块配置简述
 date: 2015-11-11 17:50:02
 categories: 微信X5浏览器
-tags: [微信浏览器,ajax,gzip,性能优化,HTTP]
+tags: [微信浏览器,AJAX,gzip,性能优化,HTTP]
 ---
 
 ### 情况
@@ -121,7 +121,7 @@ gzip的浏览器，启> 用gzip_static模块就必须同时保留原始静态文
 > # 可以google"nginx gzip_static"了解更多
 >  
 > gzip_comp_level 4;
-> # 默认值：1(建议选择为4)
+> # 默认值：1（建议选择为4）
 > # gzip压缩比/压缩级别，压缩级别 1-9，级别越高压缩率越大，当然压缩时间也就越长（传输快但比较消耗cpu）。
 >  
 > gzip_buffers 4 16k;
@@ -131,10 +131,10 @@ gzip的浏览器，启> 用gzip_static模块就必须同时保留原始静态文
 > # 如果没有设置，默认值是申请跟原始数据相同大小的内存空间去存储gzip压缩结果。
 >  
 > gzip_types mime-type [mime-type ...];
-> # 默认值: gzip_types text/html (默认不对js/css文件进行压缩)
+> # 默认值: gzip_types text/html （默认不对js/css文件进行压缩）
 > # 压缩类型，匹配MIME类型进行压缩
 > # 不能用通配符 text/*
-> # (无论是否指定)text/html默认已经压缩 
+> # （无论是否指定）text/html默认已经压缩 
 > # 设置哪压缩种文本文件可参考 conf/mime.types
 >  
 > gzip_min_length  1k;
@@ -143,7 +143,7 @@ gzip的浏览器，启> 用gzip_static模块就必须同时保留原始静态文
 > # 建议设置成大于1k的字节数，小于1k可能会越压越大。 即: gzip_min_length 1024
 >  
 > gzip_http_version 1.0|1.1;
-> # 默认值: gzip_http_version 1.1(就是说对HTTP/1.1协议的请求才会进行gzip压缩)
+> # 默认值: gzip_http_version 1.1（就是说对HTTP/1.1协议的请求才会进行gzip压缩）
 > # 识别http的协议版本。由于早期的一些浏览器或者http客户端，可能不支持gzip自解压，用户就会看到乱码，
 所以做一些判断还是有必要的。 
 > # 注：99.99%的浏览器基本上都支持gzip解压了，所以可以不用设这个值,保持系统默认即可。
