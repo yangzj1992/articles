@@ -1,4 +1,4 @@
-title: 关于chrome报错net::ERR_INCOMPLETE_CHUNKED_ENCODING的解决方案
+title: 关于 Chrome 报错 net::ERR_INCOMPLETE_CHUNKED_ENCODING 的解决方案
 date: 2015-09-11 22:55:11
 categories: bug
 tags: [Chrome,JSON,Debug]

@@ -1,4 +1,4 @@
-title: 微信内置浏览器不支持gzip压缩方式及gzip模块配置简述
+title: 微信内置浏览器不支持 gzip 压缩方式及 gzip 模块配置简述
 date: 2015-11-11 17:50:02
 categories: 微信X5浏览器
 tags: [微信浏览器,AJAX,gzip,性能优化,HTTP]

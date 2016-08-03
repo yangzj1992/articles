@@ -1,4 +1,4 @@
-title: 使用clip-path制作简单的动画效果
+title: 使用 clip-path 制作简单的动画效果
 date: 2015-11-18 16:48:18
 categories: web动画
 tags: [CSS,web动画]
