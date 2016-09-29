@@ -3,12 +3,12 @@ date: 2016-06-12 16:33:21
 categories: JavaScript
 tags: [JavaScript,性能优化,浏览器]
 ---
->** 原文链接 : [How to write low garbage real-time Javascript](https://www.scirra.com/blog/76/how-to-write-low-garbage-real-time-javascript)**
-** 原文作者 : [Ashley ](https://www.scirra.com/users/ashley)**
-** 译文出自 : [掘金翻译计划](https://github.com/xitu/gold-miner)**
-** 译者 : [yangzj1992](http://qcyoung.com)**
-** 校对者: [L9m](https://github.com/L9m), [Dwight](https://github.com/ldhlfzysys), [宁金](https://github.com/godofchina)**
-** 首发于: [掘金](http://gold.xitu.io/entry/575d14937db2a2005437df32/detail)**
+> 原文链接 : [How to write low garbage real-time Javascript](https://www.scirra.com/blog/76/how-to-write-low-garbage-real-time-javascript)    
+> 原文作者 : [Ashley ](https://www.scirra.com/users/ashley)    
+> 译文出自 : [掘金翻译计划](https://github.com/xitu/gold-miner)    
+> 译者 : [yangzj1992](http://qcyoung.com)    
+> 校对者: [L9m](https://github.com/L9m), [Dwight](https://github.com/ldhlfzysys), [宁金](https://github.com/godofchina)    
+> 首发于: [掘金](http://gold.xitu.io/entry/575d14937db2a2005437df32/detail)
 
 _编辑于 2012 年 3 月 27 日: 哇，这篇文章已经写了有很长一段时间了，十分感谢那些精彩的回复！其中有一些对于一些技术的指正，如使用 'delete' 。我知道了使用它可能会导致其他的降速问题，因此，我们在引擎中极少使用它。一如既往的你还需要对所有的事进行权衡并且需要通过其他关注点来平衡垃圾回收机制，这也只是一个在我们引擎中发现的的实用、简单的技术列表，它并不是一个完整的参考列表。但是我希望它还是有用的！_
 

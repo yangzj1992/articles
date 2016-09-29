@@ -3,12 +3,12 @@ date: 2016-07-04 23:21:10
 categories: 身份认证
 tags: [JWT,RESTful,session,web安全,token,JSON]
 ---
->** 原文链接 : [JSON Web Tokens (JWT) vs Sessions](https://float-middle.com/json-web-tokens-jwt-vs-sessions/)**
-** 原文作者 : [Jacek Ciolek](https://float-middle.com/author/jacek-ciolek/)**
-** 译文出自 : [众成翻译](http://zcfy.cc/)**
-** 译者 : [yangzj1992](http://qcyoung.com)**
-** 校对者: [lisa](https://www.zhihu.com/people/ha-ha-qiu-52)**
-** 首发于: [众成翻译](http://zcfy.cc/article/json-web-tokens-jwt-vs-sessions-685.html)**
+> 原文链接 : [JSON Web Tokens (JWT) vs Sessions](https://float-middle.com/json-web-tokens-jwt-vs-sessions/)    
+> 原文作者 : [Jacek Ciolek](https://float-middle.com/author/jacek-ciolek/)    
+> 译文出自 : [众成翻译](http://zcfy.cc/)    
+> 译者 : [yangzj1992](http://qcyoung.com)    
+> 校对者: [lisa](https://www.zhihu.com/people/ha-ha-qiu-52)    
+> 首发于: [众成翻译](http://zcfy.cc/article/json-web-tokens-jwt-vs-sessions-685.html)
 
 ## 什么是 JWT?
 

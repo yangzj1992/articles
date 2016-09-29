@@ -3,12 +3,12 @@ date: 2016-08-03 13:21:20
 categories: JavaScript
 tags: [JavaScript,ECMAScript6]
 ---
->** 原文链接 : [JavaScript variables lifecycle: why let is not hoisted](https://rainsoft.io/variables-lifecycle-and-why-let-is-not-hoisted/)**
-** 原文作者 : [Dmitri Pavlutin](https://rainsoft.io/author/dmitri-pavlutin/)**
-** 译文出自 : [众成翻译](http://zcfy.cc/)**
-** 译者 : [yangzj1992](http://qcyoung.com)**
-** 校对者: [lisa](https://www.zhihu.com/people/ha-ha-qiu-52)**
-** 首发于: [众成翻译](http://zcfy.cc/article/javascript-variables-lifecycle-why-let-is-not-hoisted-976.html)**
+> 原文链接 : [JavaScript variables lifecycle: why let is not hoisted](https://rainsoft.io/variables-lifecycle-and-why-let-is-not-hoisted/)    
+> 原文作者 : [Dmitri Pavlutin](https://rainsoft.io/author/dmitri-pavlutin/)    
+> 译文出自 : [众成翻译](http://zcfy.cc/)    
+> 译者 : [yangzj1992](http://qcyoung.com)    
+> 校对者: [lisa](https://www.zhihu.com/people/ha-ha-qiu-52)    
+> 首发于: [众成翻译](http://zcfy.cc/article/javascript-variables-lifecycle-why-let-is-not-hoisted-976.html)
 
 变量提升是一个将变量或者声明函数提升到作用域起始处的过程，通常指的是变量声明 `var` 和函数声明 `function fun() {...}` 
 

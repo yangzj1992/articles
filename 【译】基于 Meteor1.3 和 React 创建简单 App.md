@@ -3,12 +3,12 @@ date: 2016-05-11 18:13:05
 categories: Meteor
 tags: [Meteor,React,原创翻译]
 ---
->** 原文链接 : [Build A Journaling App with Meteor 1.3 (Beta), React, React-Bootstrap, and Mantra](https://medium.com/@kenrogers/build-a-journaling-app-with-meteor-1-3-beta-react-react-bootstrap-and-mantra-7965d9e9fc23#.bjcr4yhbf)**
-** 原文作者 : [Ken Rogers](https://medium.com/@kenrogers)**
-** 译文出自 : [掘金翻译计划](https://github.com/xitu/gold-miner)**
-** 译者 : [yangzj1992](http://qcyoung.com)**
-** 校对者: [Zhongyi Tong](https://github.com/geeeeeeeeek), [刘鑫](https://github.com/lx7575000)**
-** 首发于: [掘金](http://gold.xitu.io/#/entry/5732a5af79df540060df2e53)**
+> 原文链接 : [Build A Journaling App with Meteor 1.3 (Beta), React, React-Bootstrap, and Mantra](https://medium.com/@kenrogers/build-a-journaling-app-with-meteor-1-3-beta-react-react-bootstrap-and-mantra-7965d9e9fc23#.bjcr4yhbf)    
+> 原文作者 : [Ken Rogers](https://medium.com/@kenrogers)    
+> 译文出自 : [掘金翻译计划](https://github.com/xitu/gold-miner)    
+> 译者 : [yangzj1992](http://qcyoung.com)    
+> 校对者: [Zhongyi Tong](https://github.com/geeeeeeeeek), [刘鑫](https://github.com/lx7575000)    
+> 首发于: [掘金](http://gold.xitu.io/#/entry/5732a5af79df540060df2e53)
 
 由于目前 Meteor 1.3 正式版仍在开发中，在这份 Meteor 指南里我们采用了目前可以获取到的 Meteor 1.3 beta 版本进行开发。尽管 Meteor 1.3 版本很棒并有着许多精彩的改进，但部分人对于到底应该如何使用它来进行开发仍有一些困惑。 MDG(Meteor Development Group) 目前正在编写 Meteor 1.3 版指南，随着 1.3 正式版的发布，我们将会获得 Meteor 1.3 最佳开发实践的确切信息。
 

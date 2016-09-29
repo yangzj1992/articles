@@ -3,12 +3,12 @@ date: 2016-07-06 12:45:39
 categories: UED
 tags: [UI,UX,网页设计]
 ---
->** 原文链接 : [Dark Side of UI. Benefits of Dark Background](https://medium.com/@tubikstudio/dark-side-of-ui-benefits-of-dark-background-12f560bf7165#.k0d00u47a)**
-** 原文作者 : [Tubik Studio](https://medium.com/@tubikstudio)**
-** 译文出自 : [掘金翻译计划](https://github.com/xitu/gold-miner)**
-** 译者 : [yangzj1992](http://qcyoung.com)**
-** 校对者: [David Lin](https://github.com/wild-flame), [Ruixi](https://github.com/Ruixi)**
-** 首发于: [掘金](http://gold.xitu.io/entry/577c9385a633bd005be7fe7a/detail)**
+> 原文链接 : [Dark Side of UI. Benefits of Dark Background](https://medium.com/@tubikstudio/dark-side-of-ui-benefits-of-dark-background-12f560bf7165#.k0d00u47a)    
+> 原文作者 : [Tubik Studio](https://medium.com/@tubikstudio)    
+> 译文出自 : [掘金翻译计划](https://github.com/xitu/gold-miner)    
+> 译者 : [yangzj1992](http://qcyoung.com)    
+> 校对者: [David Lin](https://github.com/wild-flame), [Ruixi](https://github.com/Ruixi)    
+> 首发于: [掘金](http://gold.xitu.io/entry/577c9385a633bd005be7fe7a/detail)
 
 ![](http://ac-Myg6wSTV.clouddn.com/18dcdce02f167c38bd04.jpeg)
 

@@ -3,12 +3,12 @@ date: 2016-09-28 12:19:19
 categories: CSS
 tags: [CSS]
 ---
-> ** 原文地址：[Writing better CSS with currentColor](https://hashnode.com/post/writing-better-css-with-currentcolor-cit5mgva31co79c53ia20vetq)**
-** 原文作者：[Alkshendra Maurya](https://hashnode.com/@alkshendra)**
-** 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)**
-** 译者：[yangzj1992](http://qcyoung.com)**
-** 校对者： [linpu.li](https://github.com/llp0574), [Nicolas(Yifei) Li](https://github.com/yifili09)**
-** 首发于: [掘金](http://gold.xitu.io/entry/57eb30bebf22ec0058898ee7/detail)**
+> 原文地址：[Writing better CSS with currentColor](https://hashnode.com/post/writing-better-css-with-currentcolor-cit5mgva31co79c53ia20vetq)   
+> 原文作者：[Alkshendra Maurya](https://hashnode.com/@alkshendra)   
+> 译文出自：[掘金翻译计划](https://github.com/xitu/gold-miner)   
+> 译者：[yangzj1992](http://qcyoung.com)   
+> 校对者： [linpu.li](https://github.com/llp0574), [Nicolas(Yifei) Li](https://github.com/yifili09)   
+> 首发于: [掘金](http://gold.xitu.io/entry/57eb30bebf22ec0058898ee7/detail)
 
 
 总有一些极其强大的 CSS 属性在目前已经有了很好的浏览器支持，但却很少被开发者使用。 `currentColor` 就是这样的属性之一。
