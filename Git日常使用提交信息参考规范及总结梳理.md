@@ -1,3 +1,4 @@
+---
 title: Git日常使用提交信息参考规范及总结梳理
 date: 2016-01-14 10:46:11
 categories: Git

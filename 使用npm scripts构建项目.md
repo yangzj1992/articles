@@ -1,3 +1,4 @@
+---
 title: 使用 npm scripts 构建项目
 date: 2016-02-28 11:49:21
 categories: 构建工具

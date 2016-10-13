@@ -1,3 +1,4 @@
+---
 title: 【译】JavaScript 变量的生命周期：为什么 let 不存在变量提升
 date: 2016-08-03 13:21:20
 categories: JavaScript

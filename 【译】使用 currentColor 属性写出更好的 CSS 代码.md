@@ -1,3 +1,4 @@
+---
 title: 【译】使用 currentColor 属性写出更好的 CSS 代码
 date: 2016-09-28 12:19:19
 categories: CSS
@@ -26,13 +27,15 @@ MDN 把 currentColor [定义为](https://developer.mozilla.org/en/docs/Web/CSS/c
 `currentColor` 关键字按某种规则获取了 color 属性的值并赋值给了自身。
 
 在任何你想要默认继承 `color` 属性值的地方都可以使用 `currentColor` 这一关键字。这样当你改变 `color` 关键字的属性值时，它会自动的通过规则反映在所有 `currentColor` 关键字使用的地方。这难道不是很棒吗？😀
-```
+
+``` css
     .box {
         color: red;
         border: 1px solid currentColor;
         box-shadow: 0 0 2px 2px currentColor;
     }
 ```
+
 在上面的代码片段里，你可以看到我们不是在所有的地方都重复相同的 color 值，而是用 currentColor 来代替。这使得 CSS 变得更加容易管理，你将不再需要在不同的地方来追踪 color 值
 
 * * *
@@ -46,7 +49,8 @@ MDN 把 currentColor [定义为](https://developer.mozilla.org/en/docs/Web/CSS/c
 像链接，边框，图标以及阴影的值总是随着它们的父元素 color 值保持一致，这可以通过简化的 currentColor 来替换一遍又一遍的特定 color 值；从而使代码更加易于管理。
 
 例如:
-```
+
+``` css
     .box {
         color: red;
     }
@@ -58,24 +62,28 @@ MDN 把 currentColor [定义为](https://developer.mozilla.org/en/docs/Web/CSS/c
         border 1px solid currentColor;
     }
 ```
+
 在上面的代码片段中，你可以看到我们不是在边框、阴影上指定一个颜色，而是在这些属性上使用了 `currentColor`，这将使它们自动变为 `red`。
 
 **简化过渡和动画**
 
 currentColor 可以使 transitions 和 animations 变得更加简单。
 
-让我们考虑一下最早的代码示例，并且改变一下 hover 时的 `color` 值
-```
+让我们考虑一下最早的代码示例，并且改变一下 hover 时的 `color` 值。
+
+``` css
     .box:hover {
         color: purple;
     }
 ```
+
 这里，我们不需要再在 `:hover` 里写三个不同的属性，我们只需改变 `color` 值；所有使用 `currentColor` 的属性会自动在 hover 时发生改变。
 
 **在伪元素上使用**
 
 像是`:before` 和 `:after` 这样的伪元素也同样可以通过用 currentColor 来获取它的父元素的值。这就可以用于创建带有动态颜色的『提示框』，或是使用 body 颜色的『覆盖层』，并给它一个半透明的效果。
-```
+
+``` css
     .box {
         color: red;
     }
@@ -84,26 +92,31 @@ currentColor 可以使 transitions 和 animations 变得更加简单。
         border: 1px solid currentColor;
     }
 ```
+
 这里，`:before` 伪元素的 `color` 和 `border-color` 会从父元素 div 中获得并可以被组建成类似提示框的东西。
 
 **在 SVG 中使用**
 
 SVG 中 `currentColor` 的值同样可以从父元素中获取。当你在不同地方应用 SVG 并想从父元素中继承 color 值而又不想每次明确提及时，使用它是相当有帮助的。
-```
+
+``` css
     svg {
         fill: currentColor;
     }
 ```
+
 在这里，svg 将会使用与它父元素相同的填充颜色，并且会动态的随着父元素颜色的修改而发生变化。
 
 **在渐变中使用**
 
 `currentColor` 可以同样用于创建 CSS 渐变，其中渐变属性的一部分可以被设置成父元素的 `currentColor` 。
-```
+
+``` css
     .box {
         background: linear-gradient(top bottom right, currentColor, #FFFFFF);
     }
 ```
+
 在这里，**顶部**的渐变颜色将会总是与父元素保持一致。虽然在这种情况下只会有一个动态颜色的限制，但对基于父元素颜色来生成动态的渐变来说，这仍然是一个简洁的方法。
 
 这儿有一个 [Codepen 示例](http://codepen.io/alkshendra/pen/xEVrJJ?editors=1100#0)来演示上述的所有例子。

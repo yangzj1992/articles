@@ -1,3 +1,4 @@
+---
 title: 【译】基于 Meteor1.3 和 React 创建简单 App
 date: 2016-05-11 18:13:05
 categories: Meteor

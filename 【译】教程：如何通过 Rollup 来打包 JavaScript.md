@@ -1,3 +1,4 @@
+---
 title: 【译】教程：如何通过 Rollup 来打包 JavaScript
 date: 2016-09-29 23:58:14
 categories: 前端工程
@@ -13,10 +14,10 @@ tags: [Rollup,webpack,构建工具,前端工程]
 > 本文将通过一步步的系列教学来学习如何使用更小，更高效的工具 Rollup 来代替 Webpack 和 Browserify 打包 JavaScript 文件。
 
 这周，我们将第一次用 [Rollup](http://rollupjs.org/) 来构建我们的项目，它是一款用来打包 Javascript 代码的构建工具（它同样支持样式表，但我们将在下周单独介绍这一点）
-> 译者注：原文系列文章如下 ——
-[Part I: How to Use Rollup to Process and Bundle JavaScript Files](https://code.lengstorf.com/learn-rollup-js/)
-[Part II: How to Use Rollup to Process and Bundle Stylesheets](https://code.lengstorf.com/learn-rollup-css/)
-[Part III: How to Use Rollup to Watch and Live Reload Files During Development](https://code.lengstorf.com/learn-rollup-css/#livereload)）
+> 译者注：原文系列文章如下(本文为第一篇)    
+> [Part I: How to Use Rollup to Process and Bundle JavaScript Files](https://code.lengstorf.com/learn-rollup-js/)    
+> [Part II: How to Use Rollup to Process and Bundle Stylesheets](https://code.lengstorf.com/learn-rollup-css/)    
+> [Part III: How to Use Rollup to Watch and Live Reload Files During Development](https://code.lengstorf.com/learn-rollup-css/#livereload) 
 
 通过本教程，我们会了解到以下 Rollup 的相关配置方式：
 

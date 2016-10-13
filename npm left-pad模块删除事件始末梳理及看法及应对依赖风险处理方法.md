@@ -1,3 +1,4 @@
+---
 title: npm left-pad模块删除事件始末梳理及看法及应对依赖风险处理方法
 date: 2016-03-24 11:37:26
 categories: npm

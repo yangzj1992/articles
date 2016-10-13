@@ -1,3 +1,4 @@
+---
 title: 【译】如何编写避免垃圾开销的实时 JavaScript 代码
 date: 2016-06-12 16:33:21
 categories: JavaScript
