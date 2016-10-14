@@ -21,21 +21,21 @@ tags: [UI,UX,网页设计]
 
 很久之前，在 2009 年曾有过一个公开的投票调查结果，[ProBlogger](http://www.problogger.net/archives/2009/05/19/light-or-dark-blog-backgrounds-poll-results/) 基于此已经公布了一些有趣的观点。读者被问及他们更喜欢哪种颜色的博客背景。几乎一半的读者回答更喜欢亮色背景 - 这对于传统的文本驱动型博客来说是十分合理的，在可读性方面如此可以胜过其他方案。然而，有 10% 的受访者回答他们更喜欢暗色背景，并且有超过三分之一的人提到选择的依据应该取决于博客的性质和内容。设计师在寻找设计方案时是不能忽略占有如此大比例的用户的。此外，在具有更少的文本型驱动内容的数字产品情况时，如网站或应用程序中，持上述观点的人数比例应该还会增加。这个例子很好的说明了用户研究和调查应该是设计过程中的重要组成部分。了解用户想要什么或是至少了解他们所能够接受的是什么，这能够将传统视觉的限度推向一个极致。
 
-Richard H. Hall 和 Patrick Hanna 对于这个问题提供的[科学研究](http://lite.mst.edu/media/research/ctel/documents/LITE-2003-04.pdf)中强调了视觉感知的背景颜色和效果的关键点。在分析了不同研究者之前对网络页面效果和可读性方面的实际试验后。作者们总结了：「_他们发现正向对比（即白底黑字）会有更好的效果，并与之前提到的研究结合，说明颜色组合之间的对比度越大效果越好。_」因此在合适的设计和测试下，在其他方面深色背景也可以像浅色背景一样具有好的效果，尤其是在对比性以及布局元素的易读性上。在用户测试角度上这项研究基于不同颜色组合和效果下包含了很多有趣及有用的信息。所以在此强烈推荐给设计师们。
+Richard H. Hall 和 Patrick Hanna 对于这个问题提供的[科学研究](http://lite.mst.edu/media/research/ctel/documents/LITE-2003-04.pdf)中强调了视觉感知的背景颜色和效果的关键点。在分析了不同研究者之前对网络页面效果和可读性方面的实际试验后。作者们总结了：「*他们发现正向对比（即白底黑字）会有更好的效果，并与之前提到的研究结合，说明颜色组合之间的对比度越大效果越好。*」因此在合适的设计和测试下，在其他方面深色背景也可以像浅色背景一样具有好的效果，尤其是在对比性以及布局元素的易读性上。在用户测试角度上这项研究基于不同颜色组合和效果下包含了很多有趣及有用的信息。所以在此强烈推荐给设计师们。
 
 ![](http://ac-Myg6wSTV.clouddn.com/f5f8b33e3c4fb542fef3.jpg)
 
-<figcaption>[Ribbet 的用户界面](http://tubikstudio.com/works-ribbet/) 来自 Tubik Studio</figcaption>
+<figcaption><a href="http://tubikstudio.com/works-ribbet/">Ribbet 的用户界面来自 Tubik Studio</a></figcaption>
 
 ### 可读性方面
 
-用户体验设计的著名大师之一 Jacob Nielsen 曾提到过：「_在使用高对比度颜色的文本和背景时。最优的易读性方案是要求使用黑色文字和白色背景（所谓的正向文本）。而白色文字和黑色背景（反向文本）几乎也是一样好的。尽管这在对比度上与正向文本是一样的，但倒配色方案会让人们略微有些迷惑并会稍微降低他们的阅读速度。易读性相当受配色方案的影响，像文本比纯黑稍亮的颜色，尤其是背景色比纯白稍暗的配色，易读性会变得很差_。」
+用户体验设计的著名大师之一 Jacob Nielsen 曾提到过：「*在使用高对比度颜色的文本和背景时。最优的易读性方案是要求使用黑色文字和白色背景（所谓的正向文本）。而白色文字和黑色背景（反向文本）几乎也是一样好的。尽管这在对比度上与正向文本是一样的，但倒配色方案会让人们略微有些迷惑并会稍微降低他们的阅读速度。易读性相当受配色方案的影响，像文本比纯黑稍亮的颜色，尤其是背景色比纯白稍暗的配色，易读性会变得很差。*」
 
 的确，可读性是产品效果表现上的重要指标并且它不仅只针对文本。它超越了文本的限制并且意味着所有有意义的象征，包括字母，数字，象形符号和图片都应该被留意到并轻易的在界面中识别出。因此，设计师在选择深色的背景时应该准备更额外深入的选择并测试不同设备上的字体、图标和图像。
 
 ![](http://ac-Myg6wSTV.clouddn.com/30476ea6fc9c5178170f.png)
 
-<figcaption>[SwiftyBeaver 的着陆页](https://dribbble.com/shots/2632600-SwiftyBeaver-Landing-Page) 来自 [Ludmila Shevchenko](https://dribbble.com/LudmilaShevchenko)</figcaption>
+<figcaption><a href="https://dribbble.com/shots/2632600-SwiftyBeaver-Landing-Page">SwiftyBeaver 的着陆页</a>，来自 <a href="https://dribbble.com/LudmilaShevchenko">Ludmila Shevchenko</a></figcaption>
 
 最好的网页和应用程序的设计实践，例如 [Awwwards 上最好的黑色网站](http://www.awwwards.com/websites/black/)合集上的例子，这里展现了大量使用深色背景作为基础配色的优秀设计方案，这些方案都没有以牺牲可读性为代价。为了避免低可读性这个问题，在设计过程中重要的是要记住：
 
@@ -60,7 +60,7 @@ Richard H. Hall 和 Patrick Hanna 对于这个问题提供的[科学研究](http
 
 ![](http://ac-Myg6wSTV.clouddn.com/ffb8689a5486125bdc5b.png)
 
-<figcaption>[一款分析应用](https://dribbble.com/shots/2062865-Analytics-App)来自 [Ludmila Shevchenko](https://dribbble.com/LudmilaShevchenko)</figcaption>
+<figcaption><a href="https://dribbble.com/shots/2062865-Analytics-App">一款分析应用</a>来自 <a href="https://dribbble.com/LudmilaShevchenko">Ludmila Shevchenko</figcaption>
 
 ### 情感感知方面
 
@@ -68,7 +68,7 @@ Richard H. Hall 和 Patrick Hanna 对于这个问题提供的[科学研究](http
 
 ![](http://ac-Myg6wSTV.clouddn.com/dd0719f001ef35d5600e.gif)
 
-<figcaption>[Tubik Studio | 博物馆](https://dribbble.com/shots/2620649-Tubik-Studio-Museu) 来自 [Ernest Asanov](https://dribbble.com/ErnestAsanov)</figcaption>
+<figcaption><a href="https://dribbble.com/shots/2620649-Tubik-Studio-Museu">Tubik Studio | 博物馆</a> 来自 <a href="https://dribbble.com/ErnestAsanov">Ernest Asanov</a></figcaption>
 
 ### 深色背景的优势
 
@@ -84,7 +84,7 @@ Richard H. Hall 和 Patrick Hanna 对于这个问题提供的[科学研究](http
 
 ![](http://ac-Myg6wSTV.clouddn.com/7947c9ab8ad7a9dd9128.png)
 
-<figcaption>[Tubik Studio | Vinny 的面包店](https://dribbble.com/shots/2749617-Tubik-Studio-Vinny-s-Bakery) 来自 [Ernest Asanov](https://dribbble.com/ErnestAsanov)</figcaption>
+<figcaption><a href="https://dribbble.com/shots/2749617-Tubik-Studio-Vinny-s-Bakery">Tubik Studio | Vinny 的面包店</a> 来自 <a href="https://dribbble.com/ErnestAsanov">Ernest Asanov</a></figcaption>
 
 ### 考虑要点
 
@@ -99,7 +99,7 @@ Richard H. Hall 和 Patrick Hanna 对于这个问题提供的[科学研究](http
 
 ![](http://ac-Myg6wSTV.clouddn.com/695e0a55cb834721ce2b.gif)
 
-<figcaption>[关于食谱和烹饪的 GIF 动画](https://dribbble.com/shots/2736160-GIF-Animation-for-Recipes-and-Cooking) 来自 [Sergey Valiukh](https://dribbble.com/SergeyValiukh)</figcaption>
+<figcaption><a href="https://dribbble.com/shots/2736160-GIF-Animation-for-Recipes-and-Cooking">关于食谱和烹饪的 GIF 动画</a> 来自 <a href="https://dribbble.com/SergeyValiukh">Sergey Valiukh</figcaption>
 
 ### 推荐阅读
 

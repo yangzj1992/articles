@@ -49,7 +49,7 @@ tags: [npm,构建工具,Gulp,Grunt]
 
 ### 问题 3：脱节的文档
 
-一般来说，我所需要的核心工具的文档质量总是要比与之相关的 Grunt 和 Gulp 插件的好。比如说，如果使用了 gulp-eslint ，那么我就要在[gulp-eslint](https://github.com/adametry/gulp-eslint)文档与 ESLint 网站之间来回切换；不得不在插件与插件所抽象的工具之间来回切换上下文。Gulp 与 Grunt 的问题在于：光理解所用的工具是远远不够的。Gulp 与 Grunt 要求你还得理解插件的抽象。
+一般来说，我所需要的核心工具的文档质量总是要比与之相关的 Grunt 和 Gulp 插件的好。比如说，如果使用了 gulp-eslint ，那么我就要在 [gulp-eslint](https://github.com/adametry/gulp-eslint) 文档与 ESLint 网站之间来回切换；不得不在插件与插件所抽象的工具之间来回切换上下文。Gulp 与 Grunt 的问题在于：光理解所用的工具是远远不够的。Gulp 与 Grunt 要求你还得理解插件的抽象。
 
 大多数构建相关的工具都提供了清晰、强大，且具有高质量文档的命令行接口。[ESLint 的 CLI 文档](http://eslint.org/docs/user-guide/command-line-interface)就是个很好的例子。我发现在 npm scripts 中阅读并实现一个简短的命令行调用会更加轻松，阻碍更少，也更易于调试（因为并没有抽象层存在）。既然已经知道了痛点，接下来的问题就在于，为何我们觉得自己还需要诸如 Gulp 与 Grunt 之类的任务运行器呢？
 
@@ -71,7 +71,7 @@ tags: [npm,构建工具,Gulp,Grunt]
 
 体验 npm scripts 的强大功能其实并不需要对操作系统的命令行了解太多。当然了，[grep、sed、awk 与管道](http://www.tutorialspoint.com/unix/unix-useful-commands.htm)等是值得你去学习的，令你众生受用的技能；不过，为了使用 npm scripts，你不必非得成为 Unix 或是 Windows 命令行专家才行。你可以通过 npm 中 1000 多个拥有良好文档的脚本来完成工作。
 
-比如说，你可能不知道在 Unix 中，命令 rm -rf 会强制删除一个目录，这没问题。你可以使用 [rimraf](https://www.npmjs.com/package/rimraf) 完成同样的事情（它也是跨平台的）。大多数 npm 包都提供了一些接口，这些接口假设你对所用操作系统的命令行了解不多。只需在 npm 中搜索想要使用的包即可，边做边学就行了。过去，我常常会搜索 Gulp 插件，不过现在则是搜索 npm 包了。[libraries.io](https://libraries.io/)是个非常棒的资源。
+比如说，你可能不知道在 Unix 中，命令 `rm -rf` 会强制删除一个目录，这没问题。你可以使用 [rimraf](https://www.npmjs.com/package/rimraf) 完成同样的事情（它也是跨平台的）。大多数 npm 包都提供了一些接口，这些接口假设你对所用操作系统的命令行了解不多。只需在 npm 中搜索想要使用的包即可，边做边学就行了。过去，我常常会搜索 Gulp 插件，不过现在则是搜索 npm 包了。[libraries.io](https://libraries.io/)是个非常棒的资源。
 
 ### 误解 2：npm scripts 不够强大
 
@@ -88,7 +88,7 @@ npm scripts 本身其实是非常强大的。它提供了基于约定的 [pre �
 	}
 }
 ```
-你所要做的就是遵循约定。上述脚本会根据其前缀按照顺序运行。prebuild 脚本会在 build 脚本之前运行，因为他们的名字相同，但 prebuild 脚本有 “pre” 前缀。postbuild 脚本会在 build 脚本之后运行，因为它有 “post” 前缀。因此，如果创建了名为 prebuild、build 与 postbuild 的脚本，那么在我输入 “npm run build” 时，他们就会自动按照这个顺序运行。
+你所要做的就是遵循约定。上述脚本会根据其前缀按照顺序运行。prebuild 脚本会在 build 脚本之前运行，因为他们的名字相同，但 prebuild 脚本有 `pre` 前缀。postbuild 脚本会在 build 脚本之后运行，因为它有 `post` 前缀。因此，如果创建了名为 prebuild、build 与 postbuild 的脚本，那么在我输入 `npm run build` 时，他们就会自动按照这个顺序运行。
 
 此外，还可以通过在一个脚本中调用另一个脚本来对大的问题进行分解：
 ```
@@ -122,23 +122,27 @@ npm scripts 本身其实是非常强大的。它提供了基于约定的 [pre �
 
 ### 误解 3：Gulp 的流对于快速构建来说是不可或缺的
 
-Gulp 出来后，人们之所以很快就被它吸引过去并放弃 Grunt 的原因在于 Gulp 的内存流要比 Grunt 基于文件的方式快很多。不过，要想享受到流的强大功能，实际上并不需要 Gulp。事实上，流早就已经被内建到 Unix 与 Windows 命令行中了。管道(|)运算符会将一个命令的输出以流的方式作为另一个命令的输入。重定向（>）运算符则会将输出重定向到文件。比如说在 Unix 中，我可以 “grep” 一个文件的内容，并将输出重定向到一个新的文件：
-```
+Gulp 出来后，人们之所以很快就被它吸引过去并放弃 Grunt 的原因在于 Gulp 的内存流要比 Grunt 基于文件的方式快很多。不过，要想享受到流的强大功能，实际上并不需要 Gulp。事实上，流早就已经被内建到 Unix 与 Windows 命令行中了。管道(|)运算符会将一个命令的输出以流的方式作为另一个命令的输入。重定向（>）运算符则会将输出重定向到文件。比如说在 Unix 中，我可以 `grep` 一个文件的内容，并将输出重定向到一个新的文件：
+
+``` unix
 grep ‘Cory House’ bigFile.txt > linesThatHaveMyName.txt
 ```
+
 上述过程是流式的，并不会被写入到中间文件中（想知道如何以跨平台的方式实现上面的命令么？请继续往下读）。
 
 在 Unix 中，还可以通过 “&” 运算符同时运行两个命令：
-```
+
+``` js
 npm run script1.js & npm run script2.js
 ```
+
 上述两个脚本会同时运行。要想以跨平台的方式同时运行脚本，请使用 [npm-run-all](https://www.npmjs.com/package/npm-run-all)。这就造成了下面这个误解。
 
 ### 误解 4：npm scripts 无法实现跨平台运行
 
 很多项目都会绑定到特定的操作系统上，因此跨平台是一件并不那么重要的事情。不过，如果需要以跨平台的方式运行，那么 npm scripts 依然可以工作得很好。无数的开源项目就是佐证。下面来介绍一下实现方式。
 
-操作系统的命令行会运行你的 npm scripts。因此，在 Linux 与 OS X 上，npm scripts 会在 Unix 命令行中运行。在 Windows 上，npm scripts 则运行在 Windows 命令行中。这样，如果希望构建脚本能够运行在所有平台上，你需要适配 Unix 与 Windows。下面介绍 3 种实现方式：
+操作系统的命令行会运行你的 `npm scripts`。因此，在 Linux 与 OS X 上，`npm scripts` 会在 Unix 命令行中运行。在 Windows 上，`npm scripts` 则运行在 Windows 命令行中。这样，如果希望构建脚本能够运行在所有平台上，你需要适配 Unix 与 Windows。下面介绍 3 种实现方式：
 
 #### 方式 1：使用跨平台的命令
 
@@ -169,10 +173,11 @@ ShellJS 是个通过 Node 来运行 Unix 命令的 npm 包。这样就可以通�
 
 显然，使用 npm scripts 也存在着一些问题：JSON 规范并不支持注释，因此无法在 package.json 中添加注释。不过有一些办法可以突破这个限制：
 
-编写小巧、命名良好、单一目的的脚本
-分离文档与脚本（比如说放在 README.md 中）
-调用单独的 .js 文件
-我更偏爱第一种解决方案。如果将每个脚本都进行分解，使其保持单一职责，那么注释就变得不那么重要了。脚本的名字应该能完全描述其意图，就像任何短小、命名良好的函数一样。就像我在“Clean Code: Writing Code for Humans”中所说的那样，短小、单一职责的函数几乎是不需要注释的。如果觉得有必要添加注释，那么我会使用第 3 种方案，即将脚本移到单独的文件中。这样就可以利用 JavaScript 组合的强大力量了。
+- 编写小巧、命名良好、单一目的的脚本
+- 分离文档与脚本（比如说放在 README.md 中）
+- 调用单独的 .js 文件
+
+我更偏爱第一种解决方案。如果将每个脚本都进行分解，使其保持单一职责，那么注释就变得不那么重要了。脚本的名字应该能完全描述其意图，就像任何短小、命名良好的函数一样。就像我在 “Clean Code: Writing Code for Humans” 中所说的那样，短小、单一职责的函数几乎是不需要注释的。如果觉得有必要添加注释，那么我会使用第 3 种方案，即将脚本移到单独的文件中。这样就可以利用 JavaScript 组合的强大力量了。
 
 Package.json 也不支持变量。这看起来貌似是个大问题，但实际上并非如此，原因有二。首先，很多时候我们所需的变量都涉及到环境，这可以通过命令行进行设置。其次，如果出于其他原因而需要变量，那么你可以调用单独的 .js 文件。
 
@@ -270,7 +275,7 @@ npm install --save-dev postcss-cli autoprefixer
   "autoprefixer": "postcss -u autoprefixer -r dist/css/*"
 }
 ```
-这个任务的意思是：嗨 postcss，使用（-u标识符）Autoprefixer 替换（-r标识符）`dist/css`目录下的所有`.css`文件，给他们添加厂商前缀代码。就是这样简单！想要修改默认浏览器前缀？只要给脚本添加如下代码即可:
+这个任务的意思是：嗨 postcss，使用（-u 标识符）Autoprefixer 替换（-r标识符）`dist/css`目录下的所有`.css`文件，给他们添加厂商前缀代码。就是这样简单！想要修改默认浏览器前缀？只要给脚本添加如下代码即可:
 ```
 "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '&gt; 5%, ie 9' -r dist/css/*"
 ```
@@ -279,7 +284,7 @@ npm install --save-dev postcss-cli autoprefixer
 
 对于写代码来说，保持标准格式和样式是非常重要的，它能够确保错误最小化并提高开发效率。"代码检查"帮助我们自动化的完成了这个工作，所以我们通过使用 eslint 来进行代码检查。
 
-再次如上文所述，安装eslint的包，这次让我们使用快捷方式:
+再次如上文所述，安装 eslint 的包，这次让我们使用快捷方式:
 ```
 npm i -D eslint
 ```
@@ -287,8 +292,13 @@ npm i -D eslint
 ```
 npm install --save-dev eslint
 ```
-安装完成后，我们给 eslint 配置一些运行代码的基本规则。使用如下代码开始一个向导：、
-eslint --init // 译者注：这里直接使用会抛错 eslint 找不到，因为这种使用方法必须安装在全局，即通过 `npm install i -g eslint`方式安装
+安装完成后，我们给 eslint 配置一些运行代码的基本规则。使用如下代码开始一个向导：
+
+```
+eslint --init // 译者注：这里直接使用会抛错 eslint 找不到，因为这种使用方法必须安装在全局。
+即通过 npm install i -g eslint 方式安装
+```
+
 我建议选择"回答代码风格问题"并回答提问的相关问题。这个过程中 eslint 会在你的项目根目录下生成一个新文件，并检测你的相关代码。
 现在，让我们把代码风格检测任务添加到 `package.json` 的 scripts 对象中：
 ```
@@ -297,7 +307,7 @@ eslint --init // 译者注：这里直接使用会抛错 eslint 找不到，因�
   "lint": "eslint src/js"
 }
 ```
-我们的任务仅有13字符！它会查找 `src/js` 目录下的所有 JavaScript 文件，并根据刚才生成的规则进行代码检测。当然，如果感兴趣的话你可以详细配置各种规则：[get crazy with the options](http://eslint.org/docs/user-guide/command-line-interface#options)
+我们的任务仅有 13 字符！它会查找 `src/js` 目录下的所有 JavaScript 文件，并根据刚才生成的规则进行代码检测。当然，如果感兴趣的话你可以详细配置各种规则：[get crazy with the options](http://eslint.org/docs/user-guide/command-line-interface#options)
 
 ### 混淆压缩 JavaScript 文件
 
@@ -316,9 +326,9 @@ npm scripts 的任务的本质是：可以重复执行的、命令行任务的�
 
 这个任务的第一部分“ mkdir -p dist/js ”：如果不存在目录（-p 标识）就创建一个目录结构（mkdir），创建成功后执行 uglifyjs 命令。&& 帮助你连接多个命令，如果前一个命令成功执行的话，就分别顺序执行剩余的命令。
 
-这个任务的第二部分告诉 uglifyjs 针对 `src/js/` 目录下的所有 JS 文件（`*.js`），使用"mangle"命令（-m 标识），输出结果到`dist/js/app.js`文件中。这里是 uglifyjs 工具的全部配置选项 list of options。
+这个任务的第二部分告诉 uglifyjs 针对 `src/js/` 目录下的所有 JS 文件（`*.js`），使用 `mangle`命令（-m 标识），输出结果到 `dist/js/app.js` 文件中。这里是 uglifyjs 工具的全部配置选项 list of options。
 
-让我们来更新一下 uglify 任务，创建一个`dist/js/app.js`的压缩版本，链接另外一个 uglifyjs 的命令并传参给"compress"（-c标识）。
+让我们来更新一下 uglify 任务，创建一个 `dist/js/app.js` 的压缩版本，链接另外一个 uglifyjs 的命令并传参给 `compress`（-c标识）。
 ```
 "scripts": {
   ...
@@ -327,7 +337,7 @@ npm scripts 的任务的本质是：可以重复执行的、命令行任务的�
 ```
 ### 压缩图片
 
-下面我们将进行图片压缩的工作。根据 httparchive.org 的数据统计，网络上前 1000 名的网站平均页面大小为 1.9 M ,其中图片占了 1.1 M（with images accounting for 1.1mb of that total）。所以提高网页加载速度的其中一个好办法就是减小图片大小。
+下面我们将进行图片压缩的工作。根据 httparchive.org 的数据统计，网络上前 1000 名的网站平均页面大小为 1.9 M ，其中图片占了 1.1 M（with images accounting for 1.1mb of that total）。所以提高网页加载速度的其中一个好办法就是减小图片大小。
 
 安装 imagemin-cli:
 ```
@@ -372,7 +382,7 @@ npm i -D browser-sync
   "serve": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'"
 }
 ```
-BrowserSync 任务默认使用当前根目录下的路径启动一个服务器（--server 标识），--files 标识告诉 BrowserSync 去监测`dist`目录的 CSS 或 JS 文件，一旦有任何变化，则自动向页面注入变化的文件。
+BrowserSync 任务默认使用当前根目录下的路径启动一个服务器（`--server` 标识），`--files` 标识告诉 BrowserSync 去监测 `dist` 目录的 CSS 或 JS 文件，一旦有任何变化，则自动向页面注入变化的文件。
 
 你可以同时打开多个浏览器（甚至在不同的设备上），他们都会实时更新文件变化的！
 
@@ -396,7 +406,7 @@ BrowserSync 任务默认使用当前根目录下的路径启动一个服务器�
   "build:css": "npm run scss && npm run autoprefixer"
 }
 ```
-当你运行 npm run build:css 时，这个任务会告诉命令行去执行 npm run scss，当这个任务成功完成后，会接着（&&）执行 npm run autoprefixer。
+当你运行 `npm run build:css` 时，这个任务会告诉命令行去执行 `npm run scss`，当这个任务成功完成后，会接着（&&）执行 `npm run autoprefixer`。
 
 就像这个 build:css 任务一样，我们可以把 JavaScript 任务也链接到一起以方便执行：
 
@@ -407,7 +417,7 @@ BrowserSync 任务默认使用当前根目录下的路径启动一个服务器�
   "build:js": "npm run lint && npm run uglify"
 }
 ```
-现在，我们可以通过 npm run build:js 一步调用，来进行代码检测、混淆压缩 JavaScript 代码了！
+现在，我们可以通过 `npm run build:js` 一步调用，来进行代码检测、混淆压缩 JavaScript 代码了！
 
 合并剩余任务
 
@@ -465,7 +475,7 @@ npm 有大量可以实用的插件（[lots of baked in tasks](https://docs.npmjs
   "postinstall": "npm run watch:all"
 }
 ```
-当你在命令行中执行 npm install 的时候 postinstall 会立即执行，当团队合作时这个功能非常有用。当别人复制了你的项目并运行了 npm install 的时候，我们的 watch:all 任务就会马上执行，别人马上就会准备好一切开发环境：启动一个服务、打开一个浏览器窗口、监控文件变更。
+当你在命令行中执行 `npm install` 的时候 postinstall 会立即执行，当团队合作时这个功能非常有用。当别人复制了你的项目并运行了 npm install 的时候，我们的 watch:all 任务就会马上执行，别人马上就会准备好一切开发环境：启动一个服务、打开一个浏览器窗口、监控文件变更。
 
 ### 打包
 万一你忘记了什么知识点，我用以上所有提到的任务创建了一个 [npm-build-boilerplate](https://github.com/damonbauer/npm-build-boilerplate) 项目以方便你学习。

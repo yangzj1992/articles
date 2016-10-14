@@ -8,8 +8,7 @@ tags: [CSS,web动画]
 ## 介绍
 今年4月左右有一个比较火的网站 species-in-pieces 在前端圈里比较出名，[点击这里查看](http://species-in-pieces.com/#)
 ![species-in-pieces效果](http://qcyoung.qiniudn.com/qcyoung/使用clip-path制作简单的动画效果/poster-detail-2.png)
-它的原理就是运用了 `clip-path` 来进行实现。
-在《species in pieces》中每个动物的组成节点如下所示
+它的原理就是运用了 `clip-path` 来进行实现。在《species in pieces》中每个动物的组成节点如下所示
 
 ```
 <div class="wrap left-to-right">

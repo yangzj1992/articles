@@ -9,7 +9,7 @@ tags: [npm,模块化]
 
 [left-pad](https://www.npmjs.com/package/left-pad) 是一个依赖度非常高的仓库，根据 NPM 的统计显示，`left-pad`在23日统计显示昨日的下载量是 10 万，上周的下载量为 57 万，上个月下载量达到了 255 万。
 
-之后`left-pad`作者 Azer 在 Medium 发布了一篇文章来阐述他删除自己模块的原因
+之后 `left-pad` 作者 Azer 在 Medium 发布了一篇文章来阐述他删除自己模块的原因
 [I’ve Just Liberated My Modules](https://medium.com/@azerbike/i-ve-just-liberated-my-modules-9045c06be67c#.7unu9xvjk)
 
 这里参考 justjavac 提供的[翻译文章](http://mp.weixin.qq.com/s?__biz=MzI0NTAyNjE0NQ==&mid=427175657&idx=1&sn=57c0cda917797198df18552f7d8f4eca&scene=0#wechat_redirect)如下：
@@ -30,7 +30,7 @@ tags: [npm,模块化]
 >干杯，再见。
 
 ## npm 模块依赖的生态环境
-之后有人对[left-pad源码](https://github.com/azer/left-pad)进行查看，惊讶的发现其源码仅有11行：
+之后有人对 [left-pad 源码](https://github.com/azer/left-pad)进行查看，惊讶的发现其源码仅有 11 行：
 ```
 module.exports = leftpad;
 function leftpad (str, len, ch) {
@@ -48,20 +48,20 @@ function leftpad (str, len, ch) {
 
 之后 Haney 的一篇博文对类似这样的模块进行了更多的搜索，发现了相当多类似 `left-pad` 这样的模块。提出了疑问：我们都忘记了怎样去写程序了吗？原文在此 [NPM & left-pad: Have We Forgotten How To Program?](http://www.haneycodes.net/npm-left-pad-have-we-forgotten-how-to-program/) 
 这里简单翻译一下他列举的事实给大家：
->好的开发者们，接下来是一个比较严肃的讨论。正如你们可能已经知道的那样，这一周里`babel`,`react`以及类似一大堆高依赖的模块在 npm 无法被成功构建。他们宕机的原因是相当惊人的。
+>好的开发者们，接下来是一个比较严肃的讨论。正如你们可能已经知道的那样，这一周里 `babel`,`react` 以及类似一大堆高依赖的模块在 npm 无法被成功构建。他们宕机的原因是相当惊人的。
 
 >因为他们共同依赖了一个简单的 NPM 包 `left-pad`，它的目的是实现左填充一个字符串，他的源码也总共只有 11 行。
 令人担心的是这里有这么多包选择去依赖一个这样简单的函数，而不是采取几分钟去写一个这样的基本功能。
 
 >由于这次灾难，我开始调查整个 NPM 的生态系统。这里果然有一些类似的事情：
 
->- 有一个叫[IsArray](https://www.npmjs.com/package/isarray)的包，每天达到 88 万的下载量，而它的源代码仅有一行：
+>- 有一个叫 [IsArray](https://www.npmjs.com/package/isarray) 的包，每天达到 88 万的下载量，而它的源代码仅有一行：
 >```
 return toString.call(arr) == '[object Array]';
 >```
-> - 有一个判断是否为正数的函数[is-positive-integer ](https://www.npmjs.com/package/is-positive-integer)，源代码只有 4 行，截至昨日仍然有 3 个项目依赖使用。后来作者重构了它依赖才变为 0
-> - 一个全新安装的babel包，包含了 41000 个文件
-> - 一个空白的jspm/npm-based 应用模板起始就包含了 28000 个文件
+> - 有一个判断是否为正数的函数 [is-positive-integer](https://www.npmjs.com/package/is-positive-integer)，源代码只有 4 行，截至昨日仍然有 3 个项目依赖使用。后来作者重构了它依赖才变为 0
+> - 一个全新安装的 babel 包，包含了 41000 个文件
+> - 一个空白的 jspm/npm-based 应用模板起始就包含了 28000 个文件
 >**这些都让我感到相当惊讶。难道我们都忘记了怎样编程了吗？**
 
 ## 看法
@@ -70,8 +70,9 @@ return toString.call(arr) == '[object Array]';
 另外，其实 npm 对于解决这种包名纠纷也是有很明确的规则 [npm-disputes](https://docs.npmjs.com/misc/disputes)。我觉得其实 NPM 官方的处理也不能说有太大的问题。
 
 类似这样的事件我认为最需要解决的两件事是:
+
 - 语言应该能够提供一个足够健壮并且充分的标准库函数，这是解决这样的问题的一个重要关键。
-- 出现这种问题的原因也一部分在于NPM目前没有应对这种问题的机制，NPM 应该尽快补充类似这种危机的处理手段，如尝试修改 unpublish 包的规则、依赖项目如果缺失尝试寻找更多的替代品，防范其他人伪造同名库等。
+- 出现这种问题的原因也一部分在于 NPM 目前没有应对这种问题的机制，NPM 应该尽快补充类似这种危机的处理手段，如尝试修改 unpublish 包的规则、依赖项目如果缺失尝试寻找更多的替代品，防范其他人伪造同名库等。
 
 ## 后续
 
@@ -87,7 +88,7 @@ npm 今日在[官方宣布](http://blog.npmjs.org/post/141577284765/kik-left-pad
 
 - 模块全部要从 NPM 的 registry 拉取然后安装，每天的持续集成越来越慢、越来越慢。
 - 像 left-pad 这个模块一样，你依赖的模块被作者怒删了，应用挂掉。
-- 你在 package.json 里面指定依赖时使用了 ~a.b.c 这种表示法（意思是小版本我都要），这表示每次 npm install 时其实获取到的模块依赖很可能是和你测试后发布的版本不一致的（模块发布了新的小版本），心里慌慌的。
+- 你在 package.json 里面指定依赖时使用了 `~a.b.c` 这种表示法（意思是小版本我都要），这表示每次 npm install 时其实获取到的模块依赖很可能是和你测试后发布的版本不一致的（模块发布了新的小版本），心里慌慌的。
 - 你依赖模块的作者是个傻逼，不小心将不兼容的改动当作小版本发布了一个新版。npm install 或者 npm update 以后你依赖了这个新版，应用挂掉了。
 *注：对 3、4 有疑问的可以查看：[深入 Node 模块的安装和发布](https://segmentfault.com/a/1190000004221514)*
 

@@ -6,19 +6,19 @@ tags: [微信浏览器,AJAX,gzip,性能优化,HTTP]
 ---
 
 ### 情况
-今天在做微信项目用 ajax 传值时发现了一些异常的现象。使用微信版本:6.3.7
+今天在做微信项目用 ajax 传值时发现了一些异常的现象。使用微信版本：6.3.7
 
 ![异常 ajax 列表](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/yichang1.png)
 
-1个ajax请求请求了120kb?!打开此请求详情看了一下发现了一个关键点。
+1 个 ajax 请求请求了 120kb?!打开此请求详情看了一下发现了一个关键点。
 
 ![微信请求头](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/weixin_requestheader.png)
 
-这个微信请求，在请求头中没有接受编码头(Accept-Encoding),而在正常的电脑chrome中Accept-Encoding是正常的。
+这个微信请求，在请求头中没有接受编码头(`Accept-Encoding`),而在正常的电脑 Chrome 中 `Accept-Encoding` 是正常的。
 
 ![Chrome 请求头](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_requestheader.png)
 
-难道是微信浏览器不支持gzip的压缩方式？这里我抓包做了实验，首先我在电脑端chrome下把Accept-Encoding中的gzip值干掉进行请求。果然，请求的大小一下子飙升到微信上请求的相应大小
+难道是微信浏览器不支持 gzip 的压缩方式？这里我抓包做了实验，首先我在电脑端 Chrome 下把 `Accept-Encoding` 中的 gzip 值干掉进行请求。果然，请求的大小一下子飙升到微信上请求的相应大小
 
 ![请求列表](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_kill_gzip_list.png)
 
@@ -27,12 +27,11 @@ tags: [微信浏览器,AJAX,gzip,性能优化,HTTP]
 ![清理头](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/chrome_kill_gzip_header.png)
 
 ### w3标准
-由于在 w3.org 中关于[XMLHttpRequest](http://www.w3.org/TR/XMLHttpRequest/)的描述中指出
+由于在 w3.org 中关于 [XMLHttpRequest](http://www.w3.org/TR/XMLHttpRequest/) 的描述中指出
 
 > 4.6.2 The setRequestHeader() method
 > 
 > Terminate these steps if header is a case-insensitive match for one of the following headers:
-
 > - Accept-Charset
 > - Accept-Encoding
 > - Access-Control-Request-Headers
@@ -57,9 +56,9 @@ tags: [微信浏览器,AJAX,gzip,性能优化,HTTP]
 
 > The above headers are controlled by the user agent to let it control those aspects of transport. This guarantees data integrity to some extent. Header names starting with Sec- are not allowed to be set to allow new headers to be minted that are guaranteed not to come from XMLHttpRequest.
 
-上面的消息头被认为是应当由浏览器控制，而不能用 XMLHttpRequest 对象来修改，即不能通过 JavaScript 修改。但是这也只是 w3 建议的标准而已，至于浏览器遵不遵循标准，那就得看开发人员了。
+上面的消息头被认为是应当由浏览器控制，而不能用 XMLHttpRequest 对象来修改，即不能通过 JavaScript 修改。但是这也只是 W3 建议的标准而已，至于浏览器遵不遵循标准，那就得看开发人员了。
 
-这里为了测试，可以试着写一个PHP,回显User-Agent：
+这里为了测试，可以试着写一个 PHP,回显 `User-Agent`：
 
 ```PHP
 <?php
@@ -67,7 +66,7 @@ echo $_SERVER['HTTP_USER_AGENT'];
 ?>
 ```
 
-然后再次发送 ajax 请求，并在发送之前用 XMLHttpRequest 对象的 setRequestHeader 方法修改 User-Agent：
+然后再次发送 ajax 请求，并在发送之前用 XMLHttpRequest 对象的 `setRequestHeader` 方法修改 `User-Agent`：
 
 ```javascript
 $.ajax({
@@ -82,12 +81,12 @@ $.ajax({
 });
 ```
 
-通过测试最后得到结论：IE 还是跟往常一样无视标准的存在，可以用 JavaScript 在 ajax 请求中设置 User-Agent，而 FireFox 和 Chrome 都无法修改 User-Agent。
+通过测试最后得到结论：IE 还是跟往常一样无视标准的存在，可以用 JavaScript 在 ajax 请求中设置 `User-Agent`，而 FireFox 和 Chrome 都无法修改 `User-Agent`。
 
 ### 其余网站验证
-之后我测试了一米鲜和京东的相关页面，也发现了类似的情况。这里拿JD举例。
+之后我测试了一米鲜和京东的相关页面，也发现了类似的情况。这里拿 JD 举例。
 
-在微信中未压缩请求 diviner 大小,17.53kb.
+在微信中未压缩请求，大小 17.53kb。
 ![jd](http://qcyoung.qiniudn.com/qcyoung/微信内置浏览器不支持gzip压缩方式及gzip模块配置简述/weixinjd.png)
 
 请求头如下
@@ -102,9 +101,7 @@ $.ajax({
 
 
 ### gzip 配置说明
-另外在这个过程中还核对了 nginx 的 gzip 模块配置：
-这里顺便一路贴出来把。。
-
+另外在这个过程中还核对了 nginx 的 gzip 模块配置，这里顺便一路贴出来吧：
 
 ```python
 > Gzip 模块的各项配置

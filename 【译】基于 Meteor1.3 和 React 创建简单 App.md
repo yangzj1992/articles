@@ -45,7 +45,9 @@ tags: [Meteor,React,原创翻译]
 
 通常来说，我们需要做的第一件事就是通过 Meteor 1.3 来创建我们的 Meteor 项目，像下面这样。
 
+``` js
     meteor create journal --release 1.3-modules-beta.8
+```
 
 **但是稍等一下**，构建一个 Mantra 应用需要非常多的项目设置
 ，为了加快开发速度，我已经使用 Meteor 1.3，React，Mantra 创建创建了一个样板项目。我们就用它来代替初始方案直接开始。
@@ -56,11 +58,15 @@ tags: [Meteor,React,原创翻译]
 
 你可以通过以下命令 clone 项目：
 
+``` git
     git clone git@github.com:kenrogers/mantraplate.git
+```
 
 然后切换到刚创建的目录中运行
 
+``` npm
     npm install
+```
 
 这样会安装本应用依赖的所有的包。你可以查看示例项目来熟悉整个目录结构。
 
@@ -76,6 +82,7 @@ tags: [Meteor,React,原创翻译]
 
 在用户模块中，看看 containers 和 components 文件夹中的 NewUser 文件，。container 文件夹如下所示。
 
+``` js
     import NewUser from ‘../components/NewUser.jsx’;
     import {useDeps, composeWithTracker, composeAll} from ‘mantra-core’;
     export const composer = ({context, clearErrors}, onData) => {
@@ -93,6 +100,7 @@ tags: [Meteor,React,原创翻译]
      composeWithTracker(composer),
      useDeps(depsMapper)
     )(NewUser);
+```
 
 你可以看到我们在这里实际上并没有进行任何渲染，我们只是做一些设置和清理的工作，然后在 NewUser 组件中我们才实际上渲染了视图。
 
@@ -108,14 +116,19 @@ tags: [Meteor,React,原创翻译]
 
 首先让我们为项目添加 `react-bootstrap`
 
+``` npm
     npm install react-bootstrap
+```
 
 因为 React-Bootstrap 并不依赖任何特定的 Bootstrap 库，所以我们需要自行添加，现在让我们添加 Twitter 的官方 Meteor 包。
 
+``` js
     meteor add twbs:bootstrap
+```
 
 首先我们用 React-Bootstrap 来修改 MainLayout.jsx 文件的内容如下：
 
+``` js
     import React from ‘react’;
     import {Grid, Row} from ‘react-bootstrap’;
     const Layout = ({content = () => null }) => (
@@ -127,11 +140,13 @@ tags: [Meteor,React,原创翻译]
      </grid>
     );
     export default Layout;
+```
 
 在这里，我们从 react-boostrap 包中引入 Grid 和 Row 组件，并且像使用 div 一样为它们添加合适的 bootstrap 类。想要了解更多关于这个优秀的包的工作原理，可以在[这里](https://react-bootstrap.github.io/components.html)查看组件列表。
 
 现在让我们修改 NewUser 和 Login UI 的组件让他们更友好地贴近 Bootstrap 。打开 NewUser.jsx 文件进行如下修改：
 
+``` js
     import React from ‘react’;
     import { Col, Panel, Input, ButtonInput, Glyphicon } from ‘react-bootstrap’;
     class NewUser extends React.Component {
@@ -161,17 +176,21 @@ tags: [Meteor,React,原创翻译]
      }
     }
     export default NewUser;
+```
 
 这个表单十分简单，它仅仅负责显示自身并调用 create 方法。这里我们简单介绍一下。
 
 在我们的 actions 文件夹中，它们负责处理我们应用的逻辑，下面这一行
 
+``` js
     create(email.getValue(), password.getValue());
+```
 
 将调用该方法并创建实际用户。 Mantra 重点强调了希望把一切分离成单独的文件。因此，我们将文件分为展示、逻辑、以及这个应用程序的每个组件。
 
 现在让我们修改登录表单如下：
 
+``` js
     import React from ‘react’;
     import { Col, Panel, Input, ButtonInput, Glyphicon } from ‘react-bootstrap’;
     class Login extends React.Component {
@@ -201,6 +220,7 @@ tags: [Meteor,React,原创翻译]
      }
     }
     export default Login;
+```
 
 这基本上是一个相同的表单，但我们将用登录方法来代替它的逻辑。
 
@@ -212,6 +232,7 @@ React-Boostrap 非常易于使用，我们只需要安装好项目，使用 impo
 
 现在，我们将添加新的模块来管理我们的日志条目，首先让我们设置目录和文件。
 
+``` unix
     mkdir client/modules/entries
     cd client/modules/entries
     mkdir actions components containers
@@ -219,6 +240,7 @@ React-Boostrap 非常易于使用，我们只需要安装好项目，使用 impo
     touch actions/index.js actions/entries.js
     touch components/NewEntry.jsx components/Entry.jsx components/EntryList.jsx
     touch containers/NewEntry.js containers/Entry.js containers/EntryList.js
+```
 
 好了，现在我们有了应用中所需要的所有文件和文件夹。让我们来做一些真正的开发工作吧。
 
@@ -228,21 +250,25 @@ React-Boostrap 非常易于使用，我们只需要安装好项目，使用 impo
 
 Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随后导出路由和动作，这样在我们导入模块时即可使用。通过这种方式我们不用担心再单独导入每个文件。
 
+``` js
     import actions from ‘./actions’;
     import routes from ‘../core/routes.jsx’;
     export default {
      routes,
      actions
     };
+```
 
 **动作**
 
 动作文件夹负责我们应用的所有逻辑。你可以看到我们在这里创建了两个文件。首先是一个索引文件。这是一个类似目的模块的索引文件。我们向里面添加下面的内容。
 
+``` react
     import entries from ‘./entries’;
     export default {
      entries
     };
+```
 
 上面所做的就是导入条目文件，在条目文件中有我们的动作逻辑。这只是为了更容易地从其他文件导入我们的逻辑。
 
@@ -252,6 +278,7 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
 
 在 actions.js 中添加下面的内容来补全条目模块。
 
+``` js
     export default {
      create({Meteor, LocalState, FlowRouter}, text) {
       if (!text) {
@@ -265,15 +292,17 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
       });
      }
     };
-
+```
 当我们填写表格来创建一个新条目时，这就是会被执行的方法，我们就快设置好这些组件了，让我们先别管服务端的东西，为我们的条目创建集合和方法。
 
 在 lib 目录中打开 collections.js 文件然后添加条目集合。
 
+``` js
     export const Entries = new Mongo.Collection(‘entries’);
-
+```
 现在在 server 目录下的 methods 目录中添加 entries.js 文件，并添加以下内容来创建一个创建新条目的方法。
 
+``` js
     import {Entries} from ‘/lib/collections’;
     import {Meteor} from ‘meteor/meteor’;
     import {check} from ‘meteor/check’;
@@ -287,15 +316,17 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
       }
      });
     }
-
+```
 这是一个我们刚创建的将要被调用的方法。
 
 我们还需要将下面代码添加到 methods 文件夹中的 index.js 文件。
 
+``` js
     import entries from ‘./entries’;
     export default function () {
      entries();
     }
+```
 
 **组件**
 
@@ -303,6 +334,7 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
 
 让我们创建 UI 组件，然后我们将建立相应的容器组件。
 
+``` js
     import React from ‘react’;
     import {Grid, Row, Col} from 'react-bootstrap';
     const Entry = ({entry}) => (
@@ -317,11 +349,13 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
      </grid>
     );
     export default Entry;
+```
 
 这里获取到的 {entry} 对象是我们容器组件要传递给它属性。它包含了我们的数据。
 
 接下来我们创建 NewEntry 组件。
 
+``` js
     import React from ‘react’;
     import { Col, Panel, Input, ButtonInput, Glyphicon } from ‘react-bootstrap’;
     class NewEntry extends React.Component {
@@ -349,11 +383,13 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
      }
     }
     export default NewEntry;
+```
 
 这里我们使用了更多的 React-Bootstrap 组件，你会留意到为了获取输入的值，我们用了一个特别的 getValue() 方法。这是因为我们的渲染组件实际上并不是输入框，输入框是在这些组件的内部。所以我们需要使用这个函数来访问它。
 
 最后，我们创建一个 EntryList 组件。
 
+``` js
     import React from ‘react’;
     import {Grid, Row, Col, Panel} from ‘react-bootstrap’;
     const EntryList = ({entries}) => (
@@ -371,12 +407,14 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
      </grid>
     );
     export default EntryList;
+```
 
 接下来，我们通过属性来获取数据，设置一些 React-Bootstrap 组件，并为每个入口映射一个对应专属的面板。
 
 现在，让我们来设置这些容器组件，首先从最简单的 NewEntry 容器组件开始。
 
-    import NewEntry from ‘../components/NewEntry.jsx’;
+``` js
+    import NewEntry from '../components/NewEntry.jsx';
     import {useDeps, composeWithTracker, composeAll} from ‘mantra-core’;
     export const composer = ({context, clearErrors}, onData) => {
      const {LocalState} = context();
@@ -393,6 +431,7 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
      composeWithTracker(composer),
      useDeps(depsMapper)
     )(NewEntry);
+```
 
 这里你应该已经对 react-komposer 较为熟悉了，我们将用它来创建这一容器组件。它负责创建一个容器组件，用于处理错误、调用合适的动作。在大多数情况下，它还将获取数据并通过属性传给 UI 组件。
 
@@ -402,12 +441,15 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 
 让我们在创建条目方法时创建这一方法。
 
+``` js
     clearErrors({LocalState}) {
      return LocalState.set(‘SAVING_ERROR’, null);
     }
+```
 
 现在我们将要创建 EntryList 组件的容器。这个稍许有些复杂，因为我们会实际上获取一些数据。
 
+``` js
     import EntryList from ‘../components/EntryList.jsx’;
     import {useDeps, composeWithTracker, composeAll} from ‘mantra-core’;
     export const composer = ({context}, onData) => {
@@ -421,11 +463,13 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
      composeWithTracker(composer),
      useDeps()
     )(EntryList);
+```
 
 这也确实与其他容器组件较为相似，但一个重要的区别在于，我们会检查我们的入口集合条目结合，并将它们分配给一个变量。最终我们通过 onData 函数将这个变量传给 UI 组件。
 
 让我们在 publications 目录下的 entries.js 文件中设置发布
 
+``` js
     import {Entries} from ‘/lib/collections’;
     import {Meteor} from ‘meteor/meteor’;
     import {check} from ‘meteor/check’;
@@ -439,24 +483,30 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
       return Entries.find(selector, options);
      });
     }
+```
 
 同时我们将要为此发布创建一个 index 文件。
 
+``` js
     import entries from ‘./entries’;
     export default function () {
      entries();
     }
+```
 
 我们需要在 server 目录中打开 main.js 文件，取消注释行，导入 publications 和 methods ，所以文件就像这样：
 
+``` js
     import publications from ‘./publications’;
     import methods from ‘./methods’;
 
     // publications();
     // methods();
+```
 
 最后我们将要为独立的 Entry 组件创建容器组件。
 
+``` js
     import Entry from ‘../components/Entry.jsx’;
     import {useDeps, composeWithTracker, composeAll} from ‘mantra-core’;
     export const composer = ({context, entryId}, onData) => {
@@ -477,16 +527,19 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
      composeWithTracker(composer),
      useDeps()
     )(Entry);
+```
 
 此容器使用了一个 entryId （将通过我们之后设立的一个路由进行传递）并且找到一个合适的入口，来通过属性传递它给UI组件。
 
 让我们在之前设置的发布列表中快速设置发布来展示发布条目。
 
+``` js
     Meteor.publish(‘entries.single’, function (entryId) {
      check(entryId, String);
      const selector = {_id: entryId};
      return Entries.find(selector);
     });
+```
 
 现在让我们设置我们的路由吧。
 
@@ -494,6 +547,7 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 
 打开 routes 文件来添加一些新的路由，修改 routes 文件类似如下所示。
 
+``` js
     import React from ‘react’;
     import {mount} from ‘react-mounter’;
     import Layout from ‘./components/MainLayout.jsx’;
@@ -554,9 +608,11 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
       }
      }); 
     }</login></newuser></newentry></entry></entrylist>
+```
 
 在运行我们的应用之前我们还需要做最后一件事，打开 main.js 文件并导入我们的 entries 模块，修改内容如下。
 
+``` js
     import {createApp} from ‘mantra-core’;
     import initContext from ‘./configs/context’;
     // modules
@@ -571,16 +627,18 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
     app.loadModule(usersModule);
     app.loadModule(entriesModule);
     app.init();
+```
 
 #### 最后 — 运行成功
 
 现在我们设置了我们的所有路由并且应用已经准备好运行，让我们切换目录到根目录并运行
 
+```
     meteor
-
+```
 你可以看到应用程序在 Mantra 提供的默认加载效果中启动，让我们添加一个条目，这样我们应该可以在屏幕上看到效果了。
 
-访问 localhost:3000/new-entry ，填写并提交表单来添加一个条目。
+访问 `localhost:3000/new-entry` ，填写并提交表单来添加一个条目。
 
 然后访问根目录，你应该可以看到一个可以逐个查看链接的的条目列表。
 
