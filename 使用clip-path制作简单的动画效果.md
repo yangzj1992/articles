@@ -10,7 +10,7 @@ tags: [CSS,web动画]
 ![species-in-pieces效果](http://qcyoung.qiniudn.com/qcyoung/使用clip-path制作简单的动画效果/poster-detail-2.png)
 它的原理就是运用了 `clip-path` 来进行实现。在《species in pieces》中每个动物的组成节点如下所示
 
-```
+``` html
 <div class="wrap left-to-right">
     <div class="shard-wrap">
         <div class="shard"></div>
@@ -34,7 +34,7 @@ tags: [CSS,web动画]
 
 对应的 css 文件如下：
 
-```
+``` css
 .shard-wrap { width: 100%; height: 100%; position: absolute; transition: .5s; z-index: 2; }
 /* crow 乌鸦的图形描述 */
 .crow .shard-wrap:nth-child(1) .shard {

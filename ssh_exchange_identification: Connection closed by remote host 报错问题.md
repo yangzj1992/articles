@@ -8,11 +8,12 @@ tags: [GitHub,SSH,Debug]
 今天下午，我莫名无法向 GitHub push 代码了...最终从5点多调试到晚上11点半..感觉略坑..遂记录如下..
 
 报错内容：
-```
+
+``` bash
 fatal: unable to access 'https://***.git/': SSL peer handshake failed, the server most likely requires a client certificate to connect
 ```
 
-```
+``` bash
 ssh_exchange_identification: Connection closed by remote host
 fatal: Could not read from remote repository.
 ```
@@ -24,7 +25,7 @@ fatal: Could not read from remote repository.
 
 执行`ssh -vT git@github.com`输出记录如下：
 
-```
+``` doc
 $ ssh -vT git@github.com
 OpenSSH_6.9p1, LibreSSL 2.1.8
 debug1: Reading configuration data /etc/ssh/ssh_config

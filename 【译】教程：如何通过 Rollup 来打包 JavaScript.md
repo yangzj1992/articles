@@ -64,7 +64,7 @@ Tree-shaking 在我们引用了包含很多可用的函数或方法的第三方�
 
 目录结构是这样的：
 
-```
+``` bash
 learn-rollup/
 ├── src/
 │   ├── scripts/
@@ -79,7 +79,7 @@ learn-rollup/
 
 你可以在你的终端中执行下面的命令来安装此项目，在本教学中我们将通过此项目进行展示。
 
-```
+``` bash
 # Move to the folder where you keep your dev projects.
 cd /path/to/your/projects
 
@@ -93,13 +93,13 @@ git clone -b step-0 --single-branch https://github.com/jlengstorf/learn-rollup.g
 
 首先，通过下面的命令安装 Rollup:
 
-```
+``` bash
 npm install --save-dev rollup
 ```
 
 接下来，在 `learn-rollup` 文件夹中创建一个新文件 `rollup.config.js`。之后在文件中添加下面的内容：
 
-```
+``` js
 export default {
   entry: 'src/scripts/main.js',
   dest: 'build/js/main.min.js',
@@ -124,7 +124,7 @@ export default {
 
 一旦我们创建了配置文件，就可以在我们的终端里运行下面的代码进行测试了：
 
-```
+``` bash
 ./node_modules/.bin/rollup -c
 ```
 
@@ -138,7 +138,7 @@ export default {
 
 Rollup 如此强大的原因在于它的 “tree-shaking” 特性，它会将我们引用的模块中未使用的代码剥离。例如，在 `src/scripts/modules/mod1.js` 中有一个名为 `sayGoodbyeTo()` 的函数并未在你的项目中使用 —— 既然它不会被使用，那么 Rollup 在最后的 bundle 中就不会包含它：
 
-```
+``` js
 (function () {
 'use strict';
 
@@ -197,7 +197,7 @@ printTarget.innerText += `addArray([1, 2, 3, 4]) => ${result2}`;
 
 首先，我们需要安装 [Babel Rollup 插件](https://github.com/rollup/rollup-plugin-babel) 和 [合适的 Babel preset](https://github.com/rollup/babel-preset-es2015-rollup)
 
-```
+``` bash
 # Install Rollup’s Babel plugin.
 npm install --save-dev rollup-plugin-babel
 
@@ -211,7 +211,7 @@ npm install --save-dev babel-preset-es2015-rollup
 
 接下来，在你的项目根目录(`learn-rollup/`)创建一个名为 `.babelrc` 的新文件，在它内部添加以下 JSON 内容：
 
-```
+``` json
 {
   "presets": ["es2015-rollup"],
 } 
@@ -225,7 +225,7 @@ npm install --save-dev babel-preset-es2015-rollup
 
 在 `rollup.config.js` 中，我们需要 `import` Babel 插件，将它添加到一个新的配置选项 `plugins` 中，它会管控一个数组形式的插件列表。
 
-```
+``` js
 // Rollup plugins
 import babel from 'rollup-plugin-babel';
 
@@ -248,7 +248,7 @@ export default {
 
 安装和配置完成后，我们可以重新构建 bundle:
 
-```
+``` bash
 ./node_modules/.bin/rollup -c
 
 // 译者注：若执行报错，运行 npm install --save-dev babel-preset-es2015 具体issue 详情见：https://github.com/jlengstorf/learn-rollup/issues/2
@@ -256,7 +256,7 @@ export default {
 
 当我们观察输出时，它看上去**貌似没有什么**改变。然而实际上它还是有一些细微的区别的：例如， `addArray()` 函数：
 
-```
+``` js
 var addArray = function addArray(arr) {
   var result = arr.reduce(function (a, b) {
     return a + b;
@@ -282,7 +282,7 @@ var addArray = function addArray(arr) {
 
 为了使用 ESLint，我们将要安装 [ESLint Rollup plugin](https://github.com/TrySound/rollup-plugin-eslint)
 
-```
+``` bash
 npm install --save-dev rollup-plugin-eslint
 ```
 
@@ -290,7 +290,7 @@ npm install --save-dev rollup-plugin-eslint
 
 为了确保我们只获取我们想要的错误，我们需要首先配置 ESLint。这里可以通过下面的代码来自动生成大多数配置：
 
-```
+``` doc
 $ ./node_modules/.bin/eslint --init
 ? How would you like to configure ESLint? Answer questions about your style
 ? Are you using ECMAScript 6 features? Yes
@@ -308,7 +308,7 @@ Successfully created .eslintrc.json file in /Users/jlengstorf/dev/code.lengstorf
 
 如果你回答了上述的问题，你将会在 `.eslintrc.json` 中获得以下输出内容：
 
-```
+``` json
 {
   "env": {
     "browser": true,
@@ -349,7 +349,7 @@ Successfully created .eslintrc.json file in /Users/jlengstorf/dev/code.lengstorf
 
 所以我们来做以下调整 —— 在你的 `.eslintrc.json` 中修改 `globals` 属性和 `indent` 属性：
 
-```
+``` json
 {
   "env": {
     "browser": true,
@@ -387,7 +387,7 @@ Successfully created .eslintrc.json file in /Users/jlengstorf/dev/code.lengstorf
 
 接下来，`import` ESLint 插件并将它添加到 Rollup 配置中：
 
-```
+``` js
 // Rollup plugins
 import babel from 'rollup-plugin-babel';
 import eslint from 'rollup-plugin-eslint';
@@ -416,7 +416,7 @@ export default {
 
 但是如果我们引入一个问题 —— 比如移除一个分号 —— 我们则会看到 ESLint 的帮助提示:
 
-```
+``` bash
 $ ./node_modules/.bin/rollup -c
 
 /Users/jlengstorf/dev/code.lengstorf.com/projects/learn-rollup/src/scripts/main.js
@@ -439,7 +439,7 @@ $ ./node_modules/.bin/rollup -c
 
 为了简单起见，我们将在代码中添加一个 [`debug`](https://www.npmjs.com/package/debug) 包来简单的记录日志，通过下面的命令安装：
 
-```
+``` bash
 npm install --save debug
 ```
 
@@ -447,7 +447,7 @@ npm install --save debug
 
 然后，在 `src/scripts/main.js`中，我们添加一些简单的日志：
 
-```
+``` js
 // Import a couple modules for testing.
 import { sayHelloTo } from './modules/mod1';
 import addArray from './modules/mod2';
@@ -473,7 +473,7 @@ printTarget.innerText += `addArray([1, 2, 3, 4]) => ${result2}`;
 
 到目前为止一切顺利，但是当我们运行 rollup 时我们会得到一个警告：
 
-```
+``` doc
 $ ./node_modules/.bin/rollup -c
 Treating 'debug' as external dependency
 No name was provided for external module 'debug' in options.globals – guessing 'debug' 
@@ -495,7 +495,7 @@ No name was provided for external module 'debug' in options.globals – guessing
 
 用下面的命令安装这两个插件：
 
-```
+``` bash
 npm install --save-dev rollup-plugin-node-resolve rollup-plugin-commonjs
 ```
 
@@ -503,7 +503,7 @@ npm install --save-dev rollup-plugin-node-resolve rollup-plugin-commonjs
 
 接下来，在 Rollup 配置中 `import` 来添加插件：
 
-```
+``` js
 // Rollup plugins
 import babel from 'rollup-plugin-babel';
 import eslint from 'rollup-plugin-eslint';
@@ -552,7 +552,7 @@ export default {
 
 让我们添加一个环境变量来使我们的日志脚本只在非 `production` 环境下才会执行。在  `src/scripts/main.js` 中让我们改变 `log()` 初始化后的逻辑：
 
-```
+``` js
 // Import a logger for easier debugging.
 import debug from 'debug';
 const log = debug('app:log');
@@ -578,7 +578,7 @@ if (ENV !== 'production') {
 
 首先安装 [`rollup-plugin-replace`](https://github.com/rollup/rollup-plugin-replace),它本质上是一个用来查找和替换的工具。它可以做很多事，但对我们来说只需要找到目前的环境变量并用实际值来替代就可以了。（例如：在 bundle 中出现的所有 `ENV` 将被 `"production"` 替换）
 
-```
+``` bash
 npm install --save-dev rollup-plugin-replace
 ```
 
@@ -588,7 +588,7 @@ npm install --save-dev rollup-plugin-replace
 
 配置很简单：我们可以添加一个 `key:value` 的配对表，`key` 值是准备被替换的键值，而 `value` 是将要被替换的值。
 
-```
+``` js
 // Rollup plugins
 import babel from 'rollup-plugin-babel';
 import eslint from 'rollup-plugin-eslint';
@@ -631,7 +631,7 @@ export default {
 
 为了查看真实的效果，让我们在 `production` 环境中运行下面代码
 
-```
+``` bash
 `NODE_ENV=production ./node_modules/.bin/rollup -c` 
 ```
 
@@ -651,7 +651,7 @@ export default {
 
 用下面的命令来安装：
 
-```
+``` bash
 npm install --save-dev rollup-plugin-uglify
 ```
 
@@ -659,7 +659,7 @@ npm install --save-dev rollup-plugin-uglify
 
 接下来，让我们在 Rollup 配置中添加 Uglify 。然而，为了在开发中使代码更具可读性，让我们来设置只在生产环境中压缩混淆代码：
 
-```
+``` js
 // Rollup plugins
 import babel from 'rollup-plugin-babel';
 import eslint from 'rollup-plugin-eslint';
@@ -704,7 +704,7 @@ export default {
 
 当配置保存后，让我们设置 `NODE_ENV` 为 production 并运行 Rollup:
 
-```
+``` bash
 `NODE_ENV=production ./node_modules/.bin/rollup -c` 
 ```
 

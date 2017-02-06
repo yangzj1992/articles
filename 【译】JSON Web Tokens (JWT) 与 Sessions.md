@@ -107,7 +107,7 @@ var header = {
 
 由此得到的 JWS 结果看上去整洁而优雅，有点像这样：
 
-```
+``` bash
 `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJhZG1pbiI6dHJ1ZX0.OLvs36KmqB9cmsUrMpUutfhV52_iSz4bQMYJjkI_TLQ` 
 ```
 
@@ -118,11 +118,11 @@ var header = {
 ``` js
 [headerB64, payloadB64, signatureB64] = jwt.split('.');
 
-if (atob(signatureB64) === signatureCreatingFunction(headerB64 + '.' + payloadB64) {  
+if (atob(signatureB64) === signatureCreatingFunction(headerB64 + '.' + payloadB64) {
     // good
 } else
     // no good
-} 
+})
 ```
 
 ### JWT 头部中可以存放什么？
@@ -271,7 +271,7 @@ if (atob(signatureB64) === signatureCreatingFunction(headerB64 + '.' + payloadB6
 
 在最常见的场景中，客户端的浏览器将在认证服务中认证并接受返回的 JWT。然后客户端用某种方式（如内存，localStorage)存储这个令牌并与受保护的资源一起发送返回。通常令牌发送时是作为 cookie 或是 HTTP 请求中 `Authorization` 头部。
 
-```
+``` bash
 GET /api/secured-resource HTTP/1.1  
 Host: example.com  
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJhZG1pbiI6dHJ1ZX0.OLvs36KmqB9cmsUrMpUutfhV52_iSz4bQMYJjkI_TLQ 

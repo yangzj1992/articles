@@ -23,7 +23,7 @@ tags: [兼容性,移动端,Android]
 
 ```
 
-``` javascript
+``` js
 $(yourSelector).addClass("androidFix").scrollTop(0).removeClass("androidFix");
 ```
 

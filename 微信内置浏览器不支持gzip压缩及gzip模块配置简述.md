@@ -60,7 +60,7 @@ tags: [微信浏览器,AJAX,gzip,性能优化,HTTP]
 
 这里为了测试，可以试着写一个 PHP,回显 `User-Agent`：
 
-```PHP
+``` php
 <?php
 echo $_SERVER['HTTP_USER_AGENT'];
 ?>
@@ -68,7 +68,7 @@ echo $_SERVER['HTTP_USER_AGENT'];
 
 然后再次发送 ajax 请求，并在发送之前用 XMLHttpRequest 对象的 `setRequestHeader` 方法修改 `User-Agent`：
 
-```javascript
+``` js
 $.ajax({
     type: "GET",
     url: "ua.php",
@@ -103,7 +103,7 @@ $.ajax({
 ### gzip 配置说明
 另外在这个过程中还核对了 nginx 的 gzip 模块配置，这里顺便一路贴出来吧：
 
-```python
+``` bash
 > Gzip 模块的各项配置
 
 > gzip on|off;

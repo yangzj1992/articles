@@ -25,7 +25,7 @@ ES2015 为 `let` 提供了一个不同的改进机制。它要求了更严格的
 
 [Try in JS Bin](http://jsbin.com/fewiri/1/edit?js,console)
 
-```
+``` js
 // var hoisting
 num;     // => undefined
 var num;
@@ -89,7 +89,7 @@ function getPi() {
 
 [Try in JS Bin](http://jsbin.com/karuxe/3/edit?js,console)
 
-```
+``` js
 function multiplyByTen(number) {
   console.log(ten); // => undefined
   var ten;
@@ -116,7 +116,7 @@ multiplyByTen(4); // => 40
 
 [Try in JS Bin](http://jsbin.com/ximedo/2/edit?js,console)
 
-```
+``` js
 function sumArray(array) {
   return array.reduce(sum);
   function sum(a, b) {
@@ -156,7 +156,7 @@ sumArray([5, 10, 8]); // => 23
 
 [Try in JS Bin](http://jsbin.com/qixoko/2/edit?js,console)
 
-```
+``` js
 let condition = true;
 if (condition) {
   // console.log(number); // => Throws ReferenceError

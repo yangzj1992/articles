@@ -31,7 +31,8 @@ tags: [npm,模块化]
 
 ## npm 模块依赖的生态环境
 之后有人对 [left-pad 源码](https://github.com/azer/left-pad)进行查看，惊讶的发现其源码仅有 11 行：
-```
+
+``` js
 module.exports = leftpad;
 function leftpad (str, len, ch) {
   str = String(str);
@@ -56,9 +57,10 @@ function leftpad (str, len, ch) {
 >由于这次灾难，我开始调查整个 NPM 的生态系统。这里果然有一些类似的事情：
 
 >- 有一个叫 [IsArray](https://www.npmjs.com/package/isarray) 的包，每天达到 88 万的下载量，而它的源代码仅有一行：
->```
+
+>``` js
 return toString.call(arr) == '[object Array]';
->```
+```
 > - 有一个判断是否为正数的函数 [is-positive-integer](https://www.npmjs.com/package/is-positive-integer)，源代码只有 4 行，截至昨日仍然有 3 个项目依赖使用。后来作者重构了它依赖才变为 0
 > - 一个全新安装的 babel 包，包含了 41000 个文件
 > - 一个空白的 jspm/npm-based 应用模板起始就包含了 28000 个文件
@@ -103,7 +105,8 @@ npm 今日在[官方宣布](http://blog.npmjs.org/post/141577284765/kik-left-pad
 冻结依赖模块的版本号最简单的办法就是直接在`package.json`里面写死版本号，但是这解决不了深度依赖的问题。我们来看个例子。
 
 假设有下面这样的依赖：
-```javascript
+
+``` bash
 A@0.1.0
 |—B@0.0.1
    |—C@0.0.1
@@ -113,7 +116,8 @@ A 模块依赖了 B 模块，B 模块又依赖了 C 模块。我们可以将 B �
 这时候 C 模块更新到了 0.0.2 版本，虽然我们安装的 B 模块是 `B@0.0.1`，但是安装的 C 模块却是 `C@0.0.2`。如果不巧这个`C@0.0.2` 刚好有 bug，那我们的模块很有可能就不能正常工作了。
 
 实际上，NPM 提供了一个叫做 `npm shrinkwrap` 的命令来我们解决这个问题：
-```
+
+``` doc
 NAME
   npm-shrinkwrap -- Lock down dependency versions
 
@@ -126,7 +130,8 @@ DESCRIPTION
 这条命令会根据目前我们 `node_modules` 目录下的模块来生成一份“冻结”住的模块依赖（npm-shrinkwrap.json）。
 
 还是上面的例子，我们在模块 A 的根目录执行 `npm shrinkwrap` 后，生成的 `npm-shrinkwrap.json` 文件内容大概是下面这样：
-```
+
+``` json
 {
     "name": "A",
     "dependencies": {
@@ -152,19 +157,22 @@ DESCRIPTION
 上面生成的 `npm-shrinkwrap.json` 里面有个 `resolved` 字段，表示模块所在的位置，实际上这个字段完全可以写一个文件路径。所以，我们可以递归的遍历 `npm-shrinkwrap.json` 文件，将所有的 tgz 包先下载到我们项目的某个目录，然后改写 `resolved` 字段为对应的文件路径。这样的功能有开发者已经实现了，我们可以直接[享用](https://github.com/JamieMason/shrinkpack)
 
 还是上面的例子：
-```javascript
+
+``` bash
 A@0.1.0
 |—B@0.0.1
    |—C@0.0.1
 ```
 执行 `shrinkpack` 后，会生成下面的打包目录：
-```
+
+``` bash
 node_shrinkpack
  - B-0.0.1.tgz
  - C-0.0.1.tgz
  ```
 和 node-shrinkwrap.json 文件：
-```
+
+``` json
 {
     "name": "A",
     "dependencies": {
@@ -198,7 +206,8 @@ node_shrinkpack
 提交代码（注意要将 `npm-shrinkwrap.json` 和 `node_shrinkpack` 一起提交哦）
 发布模块或者部署应用
 如果你觉得这样很繁琐，可以定义一个 NPM 命令：
-```
+
+``` json
 "scripts": {
   "pack": "npm shrinkwrap & shrinkpack ."
 }

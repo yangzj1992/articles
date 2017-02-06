@@ -13,7 +13,7 @@ tags: [兼容性,移动端,iOS]
 解决办法大致如下：
 确保自己的页面已引入浏览器适应性 `meta`
 
-```html
+``` html
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
 ```
 
@@ -27,7 +27,7 @@ tags: [兼容性,移动端,iOS]
 }
 ```
 
-``` javascript
+``` js
 var u = navigator.userAgent, app = navigator.appVersion;
 var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 

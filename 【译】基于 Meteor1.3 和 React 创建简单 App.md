@@ -58,13 +58,13 @@ tags: [Meteor,React,原创翻译]
 
 你可以通过以下命令 clone 项目：
 
-``` git
+``` bash
     git clone git@github.com:kenrogers/mantraplate.git
 ```
 
 然后切换到刚创建的目录中运行
 
-``` npm
+``` bash
     npm install
 ```
 
@@ -83,11 +83,11 @@ tags: [Meteor,React,原创翻译]
 在用户模块中，看看 containers 和 components 文件夹中的 NewUser 文件，。container 文件夹如下所示。
 
 ``` js
-    import NewUser from ‘../components/NewUser.jsx’;
-    import {useDeps, composeWithTracker, composeAll} from ‘mantra-core’;
+    import NewUser from '../components/NewUser.jsx';
+    import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
     export const composer = ({context, clearErrors}, onData) => {
      const {LocalState} = context();
-     const error = LocalState.get(‘CREATE_USER_ERROR’);
+     const error = LocalState.get('CREATE_USER_ERROR');
      onData(null, {error});
      return clearErrors;
     };
@@ -116,7 +116,7 @@ tags: [Meteor,React,原创翻译]
 
 首先让我们为项目添加 `react-bootstrap`
 
-``` npm
+``` bash
     npm install react-bootstrap
 ```
 
@@ -128,9 +128,9 @@ tags: [Meteor,React,原创翻译]
 
 首先我们用 React-Bootstrap 来修改 MainLayout.jsx 文件的内容如下：
 
-``` js
-    import React from ‘react’;
-    import {Grid, Row} from ‘react-bootstrap’;
+``` jsx
+    import React from 'react';
+    import {Grid, Row} from 'react-bootstrap';
     const Layout = ({content = () => null }) => (
      <grid>
       <row>
@@ -146,9 +146,9 @@ tags: [Meteor,React,原创翻译]
 
 现在让我们修改 NewUser 和 Login UI 的组件让他们更友好地贴近 Bootstrap 。打开 NewUser.jsx 文件进行如下修改：
 
-``` js
-    import React from ‘react’;
-    import { Col, Panel, Input, ButtonInput, Glyphicon } from ‘react-bootstrap’;
+``` jsx
+    import React from 'react';
+    import { Col, Panel, Input, ButtonInput, Glyphicon } from 'react-bootstrap';
     class NewUser extends React.Component {
      render() {
      const {error} = this.props;
@@ -156,7 +156,7 @@ tags: [Meteor,React,原创翻译]
        <col xs="{12}" sm="{6}" smoffset="{3}">
         <panel>
          <h1>Register</h1>
-         {error ? <p style="{{color:" ‘red’}}="">{error}</p> : null}
+         {error ? <p style="{{color:" 'red'}}="">{error}</p> : null}
          <form>
           <input ref="”email”" type="”email”" placeholder="”Email”">
           <input ref="”password”" type="”password”" placeholder="”Password”">
@@ -171,8 +171,8 @@ tags: [Meteor,React,原创翻译]
      const {create} = this.props;
      const {email, password} = this.refs;
      create(email.getValue(), password.getValue());
-     email.getInputDOMNode().value = ‘’;
-     password.getInputDOMNode().value = ‘’;
+     email.getInputDOMNode().value = '';
+     password.getInputDOMNode().value = '';
      }
     }
     export default NewUser;
@@ -190,9 +190,9 @@ tags: [Meteor,React,原创翻译]
 
 现在让我们修改登录表单如下：
 
-``` js
-    import React from ‘react’;
-    import { Col, Panel, Input, ButtonInput, Glyphicon } from ‘react-bootstrap’;
+``` jsx
+    import React from 'react';
+    import { Col, Panel, Input, ButtonInput, Glyphicon } from 'react-bootstrap';
     class Login extends React.Component {
      render() {
       const {error} = this.props;
@@ -200,7 +200,7 @@ tags: [Meteor,React,原创翻译]
        <col xs="{12}" sm="{6}" smoffset="{3}">
         <panel>
          <h1>Login</h1>
-         {error ? <p style="{{color:" ‘red’}}="">{error}</p> : null}
+         {error ? <p style="{{color:" 'red'}}="">{error}</p> : null}
          <form>
           <input ref="”email”" type="”email”" placeholder="”Email”">
           <input ref="”password”" type="”password”" placeholder="”Password”">
@@ -215,8 +215,8 @@ tags: [Meteor,React,原创翻译]
      const {loginUser} = this.props;
      const {email, password} = this.refs;
      loginUser(email.getValue(), password.getValue());
-     email.getInputDOMNode().value = ‘’;
-     password.getInputDOMNode().value = ‘’;
+     email.getInputDOMNode().value = '';
+     password.getInputDOMNode().value = '';
      }
     }
     export default Login;
@@ -232,7 +232,7 @@ React-Boostrap 非常易于使用，我们只需要安装好项目，使用 impo
 
 现在，我们将添加新的模块来管理我们的日志条目，首先让我们设置目录和文件。
 
-``` unix
+``` bash
     mkdir client/modules/entries
     cd client/modules/entries
     mkdir actions components containers
@@ -251,8 +251,8 @@ React-Boostrap 非常易于使用，我们只需要安装好项目，使用 impo
 Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随后导出路由和动作，这样在我们导入模块时即可使用。通过这种方式我们不用担心再单独导入每个文件。
 
 ``` js
-    import actions from ‘./actions’;
-    import routes from ‘../core/routes.jsx’;
+    import actions from './actions';
+    import routes from '../core/routes.jsx';
     export default {
      routes,
      actions
@@ -263,8 +263,8 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
 
 动作文件夹负责我们应用的所有逻辑。你可以看到我们在这里创建了两个文件。首先是一个索引文件。这是一个类似目的模块的索引文件。我们向里面添加下面的内容。
 
-``` react
-    import entries from ‘./entries’;
+``` js
+    import entries from './entries';
     export default {
      entries
     };
@@ -282,12 +282,12 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
     export default {
      create({Meteor, LocalState, FlowRouter}, text) {
       if (!text) {
-       return LocalState.set(‘CREATE_ENTRY_ERROR’, ‘Text is required.’);
+       return LocalState.set('CREATE_ENTRY_ERROR', 'Text is required.');
       }
-      LocalState.set(‘CREATE_ENTRY_ERROR’, null);
-      Meteor.call(‘entries.create’, text, (err) => {
+      LocalState.set('CREATE_ENTRY_ERROR', null);
+      Meteor.call('entries.create', text, (err) => {
        if (err) {
-        return LocalState.set(‘CREATE_ENTRY_ERROR’, err.message);
+        return LocalState.set('CREATE_ENTRY_ERROR', err.message);
        }
       });
      }
@@ -298,17 +298,17 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
 在 lib 目录中打开 collections.js 文件然后添加条目集合。
 
 ``` js
-    export const Entries = new Mongo.Collection(‘entries’);
+    export const Entries = new Mongo.Collection('entries');
 ```
 现在在 server 目录下的 methods 目录中添加 entries.js 文件，并添加以下内容来创建一个创建新条目的方法。
 
 ``` js
-    import {Entries} from ‘/lib/collections’;
-    import {Meteor} from ‘meteor/meteor’;
-    import {check} from ‘meteor/check’;
+    import {Entries} from '/lib/collections';
+    import {Meteor} from 'meteor/meteor';
+    import {check} from 'meteor/check';
     export default function () {
      Meteor.methods({
-      ‘entries.create’(text) {
+      'entries.create'(text) {
        check(text, String);
        const createdAt = new Date();
        const entry = {text, createdAt};
@@ -322,7 +322,7 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
 我们还需要将下面代码添加到 methods 文件夹中的 index.js 文件。
 
 ``` js
-    import entries from ‘./entries’;
+    import entries from './entries';
     export default function () {
      entries();
     }
@@ -334,8 +334,8 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
 
 让我们创建 UI 组件，然后我们将建立相应的容器组件。
 
-``` js
-    import React from ‘react’;
+``` jsx
+    import React from 'react';
     import {Grid, Row, Col} from 'react-bootstrap';
     const Entry = ({entry}) => (
      <grid>
@@ -355,9 +355,9 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
 
 接下来我们创建 NewEntry 组件。
 
-``` js
-    import React from ‘react’;
-    import { Col, Panel, Input, ButtonInput, Glyphicon } from ‘react-bootstrap’;
+``` jsx
+    import React from 'react';
+    import { Col, Panel, Input, ButtonInput, Glyphicon } from 'react-bootstrap';
     class NewEntry extends React.Component {
      render() {
       const {error} = this.props;
@@ -365,7 +365,7 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
        <col xs="{12}" sm="{6}" smoffset="{3}">
         <panel>
          <h1>Add a New Entry</h1>
-         {error ? <p style="{{color:" ‘red’}}="">{error}</p> : null}
+         {error ? <p style="{{color:" 'red'}}="">{error}</p> : null}
          <form>
           <input ref="”text”" type="”textarea”" placeholder="”Add" your="" entry”="">
           <buttoninput onclick="{this.newEntry.bind(this)}" bsstyle="”primary”" type="”submit”" value="”Create”/">
@@ -379,7 +379,7 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
       const {create} = this.props;
       const {text} = this.refs;
       create(text.getValue());
-      text.getInputDOMNode().value = ‘’;
+      text.getInputDOMNode().value = '';
      }
     }
     export default NewEntry;
@@ -389,9 +389,9 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
 
 最后，我们创建一个 EntryList 组件。
 
-``` js
-    import React from ‘react’;
-    import {Grid, Row, Col, Panel} from ‘react-bootstrap’;
+``` jsx
+    import React from 'react';
+    import {Grid, Row, Col, Panel} from 'react-bootstrap';
     const EntryList = ({entries}) => (
      <grid>
       <row>
@@ -415,10 +415,10 @@ Mantra 有一个庞大的单一入口。这个索引文件负责导入内容随�
 
 ``` js
     import NewEntry from '../components/NewEntry.jsx';
-    import {useDeps, composeWithTracker, composeAll} from ‘mantra-core’;
+    import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
     export const composer = ({context, clearErrors}, onData) => {
      const {LocalState} = context();
-     const error = LocalState.get(‘CREATE_ENTRY_ERROR’);
+     const error = LocalState.get('CREATE_ENTRY_ERROR');
      onData(null, {error});
      return clearErrors;
     };
@@ -443,18 +443,18 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 
 ``` js
     clearErrors({LocalState}) {
-     return LocalState.set(‘SAVING_ERROR’, null);
+     return LocalState.set('SAVING_ERROR', null);
     }
 ```
 
 现在我们将要创建 EntryList 组件的容器。这个稍许有些复杂，因为我们会实际上获取一些数据。
 
 ``` js
-    import EntryList from ‘../components/EntryList.jsx’;
-    import {useDeps, composeWithTracker, composeAll} from ‘mantra-core’;
+    import EntryList from '../components/EntryList.jsx';
+    import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
     export const composer = ({context}, onData) => {
      const {Meteor, Collections} = context();
-     if (Meteor.subscribe(‘entries.list’).ready()) {
+     if (Meteor.subscribe('entries.list').ready()) {
       const entries = Collections.Entries.find().fetch();
       onData(null, {entries});
      }
@@ -470,11 +470,11 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 让我们在 publications 目录下的 entries.js 文件中设置发布
 
 ``` js
-    import {Entries} from ‘/lib/collections’;
-    import {Meteor} from ‘meteor/meteor’;
-    import {check} from ‘meteor/check’;
+    import {Entries} from '/lib/collections';
+    import {Meteor} from 'meteor/meteor';
+    import {check} from 'meteor/check';
     export default function () {
-     Meteor.publish(‘entries.list’, function () {
+     Meteor.publish('entries.list', function () {
       const selector = {};
       const options = {
        fields: {_id: 1, text: 1},
@@ -488,7 +488,7 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 同时我们将要为此发布创建一个 index 文件。
 
 ``` js
-    import entries from ‘./entries’;
+    import entries from './entries';
     export default function () {
      entries();
     }
@@ -497,8 +497,8 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 我们需要在 server 目录中打开 main.js 文件，取消注释行，导入 publications 和 methods ，所以文件就像这样：
 
 ``` js
-    import publications from ‘./publications’;
-    import methods from ‘./methods’;
+    import publications from './publications';
+    import methods from './methods';
 
     // publications();
     // methods();
@@ -507,11 +507,11 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 最后我们将要为独立的 Entry 组件创建容器组件。
 
 ``` js
-    import Entry from ‘../components/Entry.jsx’;
-    import {useDeps, composeWithTracker, composeAll} from ‘mantra-core’;
+    import Entry from '../components/Entry.jsx';
+    import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
     export const composer = ({context, entryId}, onData) => {
      const {Meteor, Collections} = context();
-     if (Meteor.subscribe(‘entries.single’, entryId).ready()) {
+     if (Meteor.subscribe('entries.single', entryId).ready()) {
       const entry = Collections.Entries.findOne(entryId);
       onData(null, {entry});
      } else {
@@ -534,7 +534,7 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 让我们在之前设置的发布列表中快速设置发布来展示发布条目。
 
 ``` js
-    Meteor.publish(‘entries.single’, function (entryId) {
+    Meteor.publish('entries.single', function (entryId) {
      check(entryId, String);
      const selector = {_id: entryId};
      return Entries.find(selector);
@@ -547,36 +547,36 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 
 打开 routes 文件来添加一些新的路由，修改 routes 文件类似如下所示。
 
-``` js
-    import React from ‘react’;
-    import {mount} from ‘react-mounter’;
-    import Layout from ‘./components/MainLayout.jsx’;
-    import Home from ‘./components/Home.jsx’;
-    import NewUser from ‘../users/containers/NewUser.js’;
-    import Login from ‘../users/containers/Login.js’;
-    import EntryList from ‘../entries/containers/EntryList.js’;
-    import Entry from ‘../entries/containers/Entry.js’;
-    import NewEntry from ‘../entries/containers/NewEntry.js’;
+``` jsx
+    import React from 'react';
+    import {mount} from 'react-mounter';
+    import Layout from './components/MainLayout.jsx';
+    import Home from './components/Home.jsx';
+    import NewUser from '../users/containers/NewUser.js';
+    import Login from '../users/containers/Login.js';
+    import EntryList from '../entries/containers/EntryList.js';
+    import Entry from '../entries/containers/Entry.js';
+    import NewEntry from '../entries/containers/NewEntry.js';
     export default function (injectDeps, {FlowRouter}) {
      const MainLayoutCtx = injectDeps(Layout);
-     FlowRouter.route(‘/’, {
-      name: ‘items.list’,
+     FlowRouter.route('/', {
+      name: 'items.list',
       action() {
        mount(MainLayoutCtx, {
         content: () => (<entrylist>)
        });
       }
      });
-     FlowRouter.route(‘/entry/:entryId’, {
-      name: ‘entries.single’,
+     FlowRouter.route('/entry/:entryId', {
+      name: 'entries.single',
       action({entryId}) {
        mount(MainLayoutCtx, {
         content: () => (<entry entryid="{entryId}/">)
        });
       }
      });
-    FlowRouter.route(‘/new-entry’, {
-      name: ‘newEntry’,
+    FlowRouter.route('/new-entry', {
+      name: 'newEntry',
       action() {
        mount(MainLayoutCtx, {
         content: () => (<newentry>)
@@ -584,27 +584,27 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
       }
      });
 
-     FlowRouter.route(‘/register’, {
-      name: ‘users.new’,
+     FlowRouter.route('/register', {
+      name: 'users.new',
       action() {
        mount(MainLayoutCtx, {
         content: () => (<newuser>)
        });
       }
      });
-    FlowRouter.route(‘/login’, {
-      name: ‘users.login’,
+    FlowRouter.route('/login', {
+      name: 'users.login',
       action() {
        mount(MainLayoutCtx, {
         content: () => (<login>)
        });
       }
      });
-    FlowRouter.route(‘/logout’, {
-      name: ‘users.logout’,
+    FlowRouter.route('/logout', {
+      name: 'users.logout',
       action() {
        Meteor.logout();
-       FlowRouter.go(‘/’);
+       FlowRouter.go('/');
       }
      }); 
     }</login></newuser></newentry></entry></entrylist>
@@ -613,12 +613,12 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 在运行我们的应用之前我们还需要做最后一件事，打开 main.js 文件并导入我们的 entries 模块，修改内容如下。
 
 ``` js
-    import {createApp} from ‘mantra-core’;
-    import initContext from ‘./configs/context’;
+    import {createApp} from 'mantra-core';
+    import initContext from './configs/context';
     // modules
-    import coreModule from ‘./modules/core’;
-    import usersModule from ‘./modules/users’;
-    import entriesModule from ‘./modules/entries’;
+    import coreModule from './modules/core';
+    import usersModule from './modules/users';
+    import entriesModule from './modules/entries';
     // init context
     const context = initContext();
     // create app
@@ -633,7 +633,7 @@ clearErrors 方法负责清除组件卸载时发生的所有错误。
 
 现在我们设置了我们的所有路由并且应用已经准备好运行，让我们切换目录到根目录并运行
 
-```
+``` bash
     meteor
 ```
 你可以看到应用程序在 Mantra 提供的默认加载效果中启动，让我们添加一个条目，这样我们应该可以在屏幕上看到效果了。

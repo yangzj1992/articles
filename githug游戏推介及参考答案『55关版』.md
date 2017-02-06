@@ -12,7 +12,7 @@ tags: [Git]
 
 githug 题目 list（更新日期为2016-01-03）
 
-```
+``` bash
 #1: init
 #2: config
 #3: add
@@ -71,13 +71,15 @@ githug 题目 list（更新日期为2016-01-03）
 ```
 
 个人git alias如下
-```
+
+``` 
 alias.co=checkout
 alias.ci=commit
 alias.st=status
 alias.br=branch
 ```
 整个过程中如果暂时想不起来也可以查看提示
+
 ```
 githug hint
 ```
@@ -85,7 +87,7 @@ githug hint
 # 攻略
 
 ---
-Name: init
+## Name: init
 
 Level: 1
 
@@ -102,7 +104,7 @@ $ git init
 
 ```
 ---
-Name: config
+## Name: config
 
 Level: 2
 
@@ -120,7 +122,7 @@ $ git config --global user.name "yangzj1992"
 $ git config --global user.email yangzj1992@qq.com
 ```
 ---
-Name: add
+## Name: add
 
 Level: 3
 
@@ -139,7 +141,7 @@ Answer:
 $ git add README
 ```
 ---
-Name: commit
+## Name: commit
 
 Level: 4
 
@@ -155,7 +157,7 @@ Answer:
 $ git ci -m "add"
 ```
 ---
-Name: clone
+## Name: clone
 
 Level: 5
 
@@ -169,7 +171,7 @@ Answer:
 $ git clone https://github.com/Gazler/cloneme
 ```
 ---
-Name: clone_to_folder
+## Name: clone_to_folder
 
 Level: 6`
 
@@ -184,7 +186,7 @@ Answer:
 $ git clone https://github.com/Gazler/cloneme my_cloned_repo
 ```
 ---
-Name: ignore
+## Name: ignore
 
 Level: 7
 
@@ -201,7 +203,7 @@ Answer:
 *.swp
 ```
 ---
-Name: include
+## Name: include
 
 Level: 8
 
@@ -217,7 +219,7 @@ Answer:
 !lib.a
 ```
 ---
-Name: status
+## Name: status
 
 Level: 9
 
@@ -233,7 +235,7 @@ $ git st
 ```
 
 ---
-Name: number_of_files_committed
+## Name: number_of_files_committed
 
 Level: 10
 
@@ -249,7 +251,7 @@ $ git st
 ```
 
 ---
-Name: rm
+## Name: rm
 
 Level: 11
 
@@ -264,7 +266,7 @@ $ git st
 $ git rm deleteme.rb
 ```
 ---
-Name: rm_cached
+## Name: rm_cached
 
 Level: 12
 
@@ -279,7 +281,7 @@ $ git st
 $ git rm --cached deleteme.rb
 ```
 ---
-Name: stash
+## Name: stash
 
 Level: 13
 
@@ -293,7 +295,7 @@ Answer:
 $ git stash
 ```
 ---
-Name: rename
+## Name: rename
 
 Level: 14
 
@@ -307,7 +309,7 @@ Answer:
 $ git mv oldfile.txt newfile.txt
 ```
 ---
-Name: restructure
+## Name: restructure
 
 Level: 15
 
@@ -322,7 +324,7 @@ $ mkdir src
 $ git mv *.html src
 ```
 ---
-Name: log
+## Name: log
 
 Level: 16
 
@@ -338,7 +340,7 @@ $ git log
 ```
 
 ---
-Name: tag
+## Name: tag
 
 Level: 17
 
@@ -352,7 +354,7 @@ Answer:
 $ git tag new_tag
 ```
 ---
-Name: push_tags
+## Name: push_tags
 
 Level: 18
 
@@ -366,7 +368,7 @@ Answer:
 $ git push --tags
 ```
 ---
-Name: commit_amend
+## Name: commit_amend
 
 Level: 19
 
@@ -381,7 +383,7 @@ $ git st
 $ git ci --amend
 ```
 ---
-Name: commit_in_future
+## Name: commit_in_future
 
 Level: 20
 
@@ -395,7 +397,7 @@ Answer:
 $ git ci --date=2016-01-04T00:00:00
 ```
 ---
-Name: reset
+## Name: reset
 
 Level: 21
 
@@ -409,7 +411,7 @@ Answer:
 $ git reset head to_commit_second.rb
 ```
 ---
-Name: reset_soft
+## Name: reset_soft
 
 Level: 22
 
@@ -423,7 +425,7 @@ Answer:
 $ git reset --soft HEAD^
 ```
 ---
-Name: checkout_file
+## Name: checkout_file
 
 Level: 23
 
@@ -437,7 +439,7 @@ Answer:
 $ git co -- config.rb
 ```
 ---
-Name: remote
+## Name: remote
 
 Level: 24
 
@@ -453,7 +455,7 @@ $ git remote -v
 ```
 
 ---
-Name: remote_url
+## Name: remote_url
 
 Level: 25
 
@@ -469,7 +471,7 @@ $ git remote -v
 ```
 
 ---
-Name: pull
+## Name: pull
 
 Level: 26
 
@@ -483,7 +485,7 @@ Answer:
 $ git pull origin master
 ```
 ---
-Name: remote_add
+## Name: remote_add
 
 Level: 27
 
@@ -497,7 +499,7 @@ Answer:
 $ git remote add origin https://github.com/githug/githug
 ```
 ---
-Name: push
+## Name: push
 
 Level: 28
 
@@ -512,7 +514,7 @@ $ git rebase origin/master
 $ git push origin master
 ```
 ---
-Name: diff
+## Name: diff
 
 Level: 29
 
@@ -528,7 +530,7 @@ $ git diff
 ```
 
 ---
-Name: blame
+## Name: blame
 
 Level: 30
 
@@ -544,7 +546,7 @@ $ git blame config.rb
 ```
 
 ---
-Name: branch
+## Name: branch
 
 Level: 31
 
@@ -558,7 +560,7 @@ Answer:
 $ git co -b test_code
 ```
 ---
-Name: checkout
+## Name: checkout
 
 Level: 32
 
@@ -572,7 +574,7 @@ Answer:
 $ git co -b my_branch
 ```
 ---
-Name: checkout_tag
+## Name: checkout_tag
 
 Level: 33
 
@@ -586,7 +588,7 @@ Answer:
 $ git co v1.2
 ```
 ---
-Name: checkout_tag_over_branch
+## Name: checkout_tag_over_branch
 
 Level: 34
 
@@ -600,7 +602,7 @@ Answer:
 $ git co tags/v1.2
 ```
 ---
-Name: branch_at
+## Name: branch_at
 
 Level: 35
 
@@ -615,7 +617,7 @@ $ git br test_branch -v a2ba76984a08d706d40a4d206462140e2ec4c53b
 ```
 
 ---
-Name: delete_branch
+## Name: delete_branch
 
 Level: 36
 
@@ -629,7 +631,7 @@ Answer:
 $ git br -d delete_me
 ```
 ---
-Name: push_branch
+## Name: push_branch
 
 Level: 37
 
@@ -643,7 +645,7 @@ Answer:
 $ git push origin test_branch
 ```
 ---
-Name: merge
+## Name: merge
 
 Level: 38
 
@@ -657,7 +659,7 @@ Answer:
 $ git merge feature
 ```
 ---
-Name: fetch
+## Name: fetch
 
 Level: 39
 
@@ -671,7 +673,7 @@ Answer:
 $ git fetch origin
 ```
 ---
-Name: rebase
+## Name: rebase
 
 Level: 40
 
@@ -686,7 +688,7 @@ $ git co feature
 $ git rebase master
 ```
 ---
-Name: repack
+## Name: repack
 
 Level: 41
 
@@ -700,7 +702,7 @@ Answer:
 $ git repack -d
 ```
 ---
-Name: cherry-pick
+## Name: cherry-pick
 
 Level: 42
 
@@ -716,7 +718,7 @@ $ git blame README.md
 $ git cherry-pick ca32a6da
 ```
 ---
-Name: grep
+## Name: grep
 
 Level: 43
 
@@ -730,7 +732,7 @@ Answer:
 $ git grep TODO
 ```
 ---
-Name: rename_commit
+## Name: rename_commit
 
 Level: 44
 
@@ -749,7 +751,7 @@ $ git ci --amend  修改commit信息
 $ git rebase --continue
 ```
 ---
-Name: squash
+## Name: squash
 
 Level: 45
 
@@ -764,7 +766,7 @@ $ git rebase 331299b796c6e873dbffd08f2ac111454fa75b8a -i(最先的commit hash)
 修改pick 为squash
 ```
 ---
-Name: merge_squash
+## Name: merge_squash
 
 Level: 46
 
@@ -779,7 +781,7 @@ $ git merge --squash long-feature-branch
 $ git ci -a -m "merge branch"
 ```
 ---
-Name: reorder
+## Name: reorder
 
 Level: 47
 
@@ -794,7 +796,7 @@ $ git rebase -i 89b082ce1e8c445b5ad336d51fe4491756949053
 修改pick的顺序
 ```
 ---
-Name: bisect
+## Name: bisect
 
 Level: 48
 
@@ -815,7 +817,7 @@ $ git bisect run make test
 ```
 
 ---
-Name: stage_lines
+## Name: stage_lines
 
 Level: 49
 
@@ -830,7 +832,7 @@ $ git add -p
 stage this hunk 选择e编辑，删除second feature stage
 ```
 ---
-Name: find_old_branch
+## Name: find_old_branch
 
 Level: 50
 
@@ -847,7 +849,7 @@ $ git reflog
 $ git co solve_world_hunger
 ```
 ---
-Name: revert
+## Name: revert
 
 Level: 51
 
@@ -862,7 +864,7 @@ Answer:
 $ git revert 8be480b0e0332dedf8dd9a2b4ee3c4d061a2c79d
 ```
 ---
-Name: restore
+## Name: restore
 
 Level: 52
 
@@ -877,7 +879,7 @@ $ git reflog
 $ git co 5fefc92
 ```
 ---
-Name: conflict
+## Name: conflict
 
 Level: 53
 
@@ -894,7 +896,7 @@ $ git add .
 $ git ci -m "merge"
 ```
 ---
-Name: submodule
+## Name: submodule
 
 Level: 54
 
@@ -908,7 +910,7 @@ Answer:
 $ git submodule add https://github.com/jackmaney/githug-include-me githug-include-me
 ```
 ---
-Name: contribute
+## Name: contribute
 
 Level: 55
 
