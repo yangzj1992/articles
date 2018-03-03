@@ -69,7 +69,9 @@ ssh_exchange_identification: Connection closed by remote host
 
 ![](http://qcyoung.qiniudn.com/qcyoung/shijietongdetail.png)
 
-最终..禁用插件，重启路由。问题解决..
+最终..禁用插件，重启路由。问题解决...
+
+此种解决方案具有通用型，很多时候并不是ssh-key 的问题，而是网络问题。比如Global的VPN，Shadowsocks 都有可能导致这类错误。
 
 SO...后来人可以试试上面列举到的搜索的方法..或者看看你的网络设置，一般可以解决这一报错问题..
 
